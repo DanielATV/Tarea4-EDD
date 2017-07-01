@@ -15,7 +15,7 @@ int main(){
 		
 		scanf("%d %d",&aux1,&aux2);
 		//cambiar esto..
-		setEdge(G,aux1,aux2);
+		setEdge(G,G.lista[aux1],G.lista[aux2]);
 
 	}
 
