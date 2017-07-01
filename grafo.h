@@ -1,7 +1,11 @@
-//TDA Grafo
+#ifdef __grafo_en_h__
+#define __grafo_en_h__
 
+#include <stdio.h>
+
+//estructura del grafo
 typedef struct grafo{
-    tLista *lista; //puntero a 
+    tLista *lista; //puntero a la lista
     long int vertice; //numero de vertices
     long int arcos; //numero de arcos
 } tGrafo;
@@ -28,3 +32,4 @@ void setEdge (tGrafo *G, long int v1, long int v2);
 long int getMark (tGrafo *G, tNodo v); 
 // marca un vertice con un valor dado---D
 void setMark (tGrafo *G, tVertice v, int marca); D
+#endif
