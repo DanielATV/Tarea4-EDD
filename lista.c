@@ -68,7 +68,6 @@ elemento lremove(tLista *l){
 void moveToStart(tLista* l){
 	l -> pos = 0;
 	l -> curr = l -> head;
-
 }
 //funciona
 void prev (tLista* l){
@@ -81,8 +80,6 @@ void prev (tLista* l){
 	}
 	l->curr = aux;
 	l->pos = (l->pos)-1;
-
-
 }
 //funciona
 void movetoEnd(tLista *l){
@@ -128,10 +125,7 @@ void Print(tLista *L)
 		printf("[%d,%d] ",temp2->info.comienzo,temp2->info.final);
 		temp2 = temp2->sig; 
 	}	
-
 	printf("\n");
-
-
 }
 //funciona
 void clearL(tLista *l){
