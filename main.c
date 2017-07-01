@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include "heap.h"
-//#include "heap.c"
+#include "grafo.h"
+#include "grafo.c"
 
 int main(){
 	int num_ciuds;
