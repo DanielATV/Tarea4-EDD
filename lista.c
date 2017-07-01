@@ -101,11 +101,11 @@ int next(tLista *l)
 	}
 }
 //funciona
-int length(tLista *l){
+long int length(tLista *l){
 	return l->listSize;
 }
 //funciona
-int currPos(tLista *l)
+long int currPos(tLista *l)
 {	
 	return l->pos;
 }
