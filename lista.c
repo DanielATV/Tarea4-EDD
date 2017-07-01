@@ -113,20 +113,8 @@ int currPos(tLista *l)
 elemento getValue(tLista *l){
 	return l->curr->sig->info;
 }
-//POR MODIFICAR
-void Print(tLista *L)
-{
-	printf("La lista es:");
-	tNodo *temp2= L->head->sig;
-		
 
-	while(temp2 != NULL)
-	{
-		printf("[%d,%d] ",temp2->info.comienzo,temp2->info.final);
-		temp2 = temp2->sig; 
-	}	
-	printf("\n");
-}
+
 //funciona
 void clearL(tLista *l){
 	int i;
