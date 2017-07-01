@@ -12,7 +12,9 @@ int main(){
 	int i,aux1,aux2;
 	for (i=0; i < num_caminos;i++)
 	{
+		
 		scanf("%d %d",&aux1,&aux2);
+		//cambiar esto..
 		setEdge(G,aux1,aux2);
 
 	}
