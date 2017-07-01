@@ -8,8 +8,10 @@ void initGraph(tGrado *G, int n){
 }
 
 void destroyGraph (tGrafo *G)
-{
-	clearL(G->lista);
+{	
+	int i;
+	for(i = 0; i < G->vertice; i++) clearL(G->lista[i]);		
+	free((void *)G->lista);
 	G->vertice = 0;
 	G->arcos = 0;
 }
