@@ -6,7 +6,7 @@
 //estructura del grafo
 typedef struct grafo{
     tLista *lista; //puntero a la lista
-    long int vertice; //numero de vertices
+    long int vertices; //numero de vertices
     long int arcos; //numero de arcos
 } tGrafo;
 
