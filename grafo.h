@@ -19,7 +19,7 @@ int nEdges (tGrafo *G); S
 tVertice next(tVertice v); F
 // devuelve el vecino siguiente (i+1) a uno dado (i).
 // Retorna el número total de vértices si es que no existe
-tVertice first (tGrafo *G, int i); D
+tVertice first (tGrafo *G, long int i); D
 // agrega un nuevo arco al grafo entre vértices v1 y v2 (no se
 // pueden agregar nuevos vértices)
 void setEdge (tGrafo *G, tVertice v1, tVertice v2, int peso); S
