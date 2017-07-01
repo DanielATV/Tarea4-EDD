@@ -27,10 +27,10 @@ int main(){
 	for (j=0,j<consultas;j++)
 	{
 		//FALTA SCANEAR NUM AMIGOS ... Y LOS QUE SIGUEN
-		int ciudad_cumple;	
+		long int ciudad_cumple;	
 		bool cumple = 0; //false
-		int num_vertices = nVertex(G);
-		int maxmarcas =0;
+		long int num_vertices = nVertex(G);
+		long int maxmarcas =0;
 		for(i =0;i<num_vertices;i++){
 			if (getMark(G[i])>=maxmarcas)
 			{
