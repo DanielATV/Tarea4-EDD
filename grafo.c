@@ -29,7 +29,7 @@ tNodo *next (tNodo *v)
 	return v->sig;
 }
 
-tVertice *first (tGrafo *G, long int i){
+tNodo *first (tGrafo *G, long int i){
 	tNodo *np;
 	np = G -> lista[i] -> head -> sig;
 	return np;
