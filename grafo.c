@@ -7,12 +7,11 @@ void initGraph(tGrado *G, int n){
 	G->arcos = 0;
 }
 
-void destroyGraph (tGrafo *G)
-{	
+void destroyGraph (tGrafo *G){	
 	int i;
 	for(i = 0; i < G->vertice; i++) clearL(G->lista[i]);		
 	free((void *)G->lista);
-	G->vertice = 0;
+	G->vertices = 0;
 	G->arcos = 0;
 }
 
