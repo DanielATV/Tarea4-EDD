@@ -33,7 +33,7 @@ tVertice *first (tGrafo *G, long int i){
 }
 
 void setMark (tGrafo *G, long int i, long int marca){
-	G -> lista[i] -> head -> mark = marca;
+	G -> lista[i] -> head -> info -> mark = marca;
 }
 
 
