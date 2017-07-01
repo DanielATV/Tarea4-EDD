@@ -51,9 +51,6 @@ void moveToPos (tLista*,int);
 // obtiene el valor del elemento actual de la lista S LISTO
 elemento getValue (tLista*);
 // imprime la lista F
-void Print(tLista *); 
-// imprime un elemento F
-void Printelemento(elemento);
-// Resetea la Lista l
+
 void clearL(tLista*);
 #endif
