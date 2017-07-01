@@ -11,9 +11,9 @@ void initGraph (tGrafo *G, int n); S
 // libera la memoria utilizada por un grafo
 void destroyGraph (tGrafo *G); F
 // retorna el número de vértices en el grafo
-int nVertex (tGrafo *G); D
+long int nVertex (tGrafo *G); D
 // retorna el número de arcos en el grafo
-int nEdges (tGrafo *G); S
+long int nEdges (tGrafo *G); S
 // Devuelve el primer vecino de un vértice v dado (asume que los
 // vecinos de un vértice están ordenados por número de vértice)
 tVertice next(tVertice v); F
@@ -25,6 +25,6 @@ tVertice first (tGrafo *G, long int i); D
 void setEdge (tGrafo *G, tVertice v1, tVertice v2, int peso); S
 // obtiene la marca asignada a un vértice dado (ciertos algoritmos
 // necesitan marcar los vértices)
-int getMark (tGrafo *G, tVertice v); F
+long int getMark (tGrafo *G, tVertice v); F
 // marca un vértice con un valor dado
 void setMark (tGrafo *G, tVertice v, int marca); D
