@@ -1,25 +1,26 @@
-#ifndef __lista_en_h__
-#define __lista_en_h__
+#ifndef __lista_h__
+#define __lista_h__
 
 #include <stdlib.h>
 
 typedef struct elemento{
-    long int marca;
-    long int pos;
+ long int num;
+ long int marca;
 } elemento;
 
 typedef struct nodo {
-    elemento info; // el elemento en sí
-    struct nodo *sig; // puntero autoreferencial al proximo nodo
+ elemento info; // el elemento en sí
+ struct nodo *sig; // puntero autoreferencial
+                   // al proximo nodo
 } tNodo;
 
 //Estructura de la lista:
 typedef struct Lista{
-    tNodo *head; //Primer elemento
-    tNodo *tail; //Ultimo elemento
-    tNodo *curr; //Elemento actual
-    long int listSize; //Tamaño de la lista
-    long int pos; // Posición actual en la lista
+ tNodo *head; //Primer elemento
+ tNodo *tail; //Ultimo elemento
+ tNodo *curr; //Elemento actual
+ long unsigned int listSize; //Tamaño de la lista
+ long unsigned int pos; // Posición actual en la lista
 } tLista;
 
 // crea la lista LISTO
@@ -43,9 +44,9 @@ int next (tLista*);
 // No produce cambios si está en la cola de la lista D LISTO
 void prev (tLista*);
 // retorna el número de elementos en la lista s LISTO
-long int length (tLista*);
+int length (tLista*);
 // retorna la posición del elemento actual F LISTO
-long int currPos (tLista*);
+int currPos (tLista*);
 // mueve la posición actual a una especificada D(puede no necesario)
 void moveToPos (tLista*,int);
 // obtiene el valor del elemento actual de la lista S LISTO
