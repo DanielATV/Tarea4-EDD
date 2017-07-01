@@ -14,11 +14,10 @@ void destroyGraph (tGrafo *G); F
 long int nVertex (tGrafo *G); D
 // retorna el número de arcos en el grafo
 long int nEdges (tGrafo *G); S
-// Devuelve el primer vecino de un vértice v dado (asume que los
-// vecinos de un vértice están ordenados por número de vértice)
-tVertice next(tVertice v); F
 // devuelve el vecino siguiente (i+1) a uno dado (i).
 // Retorna el número total de vértices si es que no existe
+tVertice next(tVertice v); F
+// Devuelve el primer vecino de un vértice i dado
 tVertice first (tGrafo *G, long int i); D
 // agrega un nuevo arco al grafo entre vértices v1 y v2 (no se
 // pueden agregar nuevos vértices)
