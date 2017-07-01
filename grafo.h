@@ -1,6 +1,7 @@
 #ifndef __grafo_h__
 #define __grafo_h__
 
+#include "lista.h"
 #include <stdio.h>
 
 //estructura del grafo
