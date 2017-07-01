@@ -1,5 +1,11 @@
 TDA Grafo
 
+typedef struct grafo{
+    tLista *lista; //puntero a 
+    long int vertice; //numero de vertices
+    long int arcos; //numero de arcos
+} tGrafo;
+
 // inicializa un grafo para n vértices
 void initGraph (tGrafo *G, int n); S
 // libera la memoria utilizada por un grafo
