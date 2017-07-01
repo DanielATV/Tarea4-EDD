@@ -24,7 +24,7 @@ long int nEdges(tGrafo *G){
 	return G->arcos;
 }
 
-tNodo *next (tNodo *v)
+tNodo *nextg (tNodo *v)
 {
 	return v->sig;
 }
