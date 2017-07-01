@@ -29,7 +29,7 @@ tNodo first (tGrafo *G, long int i);
 void setEdge (tGrafo *G, long int v1, long int v2); 
 // obtiene la marca asignada a un vertice dado (ciertos algoritmos
 // necesitan marcar los vertices)---F
-long int getMark (tGrafo *G, tNodo v); 
+long int getMark ( tNodo v); 
 // marca un vertice con un valor dado---D
 void setMark (tGrafo *G, tNodo v, int marca); D
 #endif
