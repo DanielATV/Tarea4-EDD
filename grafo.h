@@ -21,7 +21,7 @@ long int nVertex (tGrafo *G);
 long int nEdges (tGrafo *G); 
 // Devuelve el primer vecino de un vertice v dado (asume que los
 // vecinos de un vertice estan ordenados por número de vertice)--D
-tNodo *nextg (tNodo v); 
+tNodo *nextg (tNodo *v); 
 // devuelve el vecino siguiente (i+1) a uno dado (i).
 // Retorna el numero total de vertices si es que no existe--D
 tNodo *first (tGrafo *G, long int i); 
