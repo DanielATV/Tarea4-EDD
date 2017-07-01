@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 typedef struct elemento{
-    long int marca;
+    long int mark;
     long int pos;
 } elemento;
 
