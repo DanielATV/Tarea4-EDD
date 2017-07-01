@@ -4,13 +4,13 @@
 #include <stdlib.h>
 
 typedef struct elemento{
-    int nodo;
+    long int marca;
+    long int pos;
 } elemento;
 
 typedef struct nodo {
     elemento info; // el elemento en sí
-    struct nodo *sig; // puntero autoreferencial
-                   // al proximo nodo
+    struct nodo *sig; // puntero autoreferencial al proximo nodo
 } tNodo;
 
 //Estructura de la lista:
@@ -18,8 +18,8 @@ typedef struct Lista{
     tNodo *head; //Primer elemento
     tNodo *tail; //Ultimo elemento
     tNodo *curr; //Elemento actual
-    unsigned int listSize; //Tamaño de la lista
-    unsigned int pos; // Posición actual en la lista
+    long int listSize; //Tamaño de la lista
+    long int pos; // Posición actual en la lista
 } tLista;
 
 // crea la lista LISTO
@@ -43,9 +43,9 @@ int next (tLista*);
 // No produce cambios si está en la cola de la lista D LISTO
 void prev (tLista*);
 // retorna el número de elementos en la lista s LISTO
-int length (tLista*);
+long int length (tLista*);
 // retorna la posición del elemento actual F LISTO
-int currPos (tLista*);
+long int currPos (tLista*);
 // mueve la posición actual a una especificada D(puede no necesario)
 void moveToPos (tLista*,int);
 // obtiene el valor del elemento actual de la lista S LISTO
