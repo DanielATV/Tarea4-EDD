@@ -1,4 +1,4 @@
-#ifdef __grafo_h__
+#ifndef __grafo_h__
 #define __grafo_h__
 
 #include <stdio.h>
