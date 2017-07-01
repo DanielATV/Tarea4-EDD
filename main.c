@@ -27,6 +27,10 @@ int main(){
 	for (j=0,j<consultas;j++)
 	{
 		//FALTA SCANEAR NUM AMIGOS ... Y LOS QUE SIGUEN
+		char *consulta;
+		scanf("%s",consulta);
+		//------------------
+		
 		long int ciudad_cumple;	
 		bool cumple = 0; //false
 		long int num_vertices = nVertex(G);
