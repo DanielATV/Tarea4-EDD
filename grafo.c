@@ -4,7 +4,9 @@
 #include <stdlib.h>
 
 void initGraph(tGrafo *G,long int n){
-	G->lista = (tLista *)malloc(sizeof(tLista)*n);
+	int i;
+	G->lista = (tLista **)malloc(sizeof(tLista *)*n);
+	for(i = 0; i < G->vertices; i++) G->lista[i] = crearLista();		
 	G->vertices = 0;
 	G->arcos = 0;
 }
@@ -41,8 +43,8 @@ tNodo *first (tGrafo *G, long int i){
 void setEdge(tGrafo *G,long int v1,long int v2){
 	elemento e1,e2;
 	// modifico ambos elementos
-	e1 -> pos = v1;
-	e2 -> pos = v2;
+	e1.pos = v1;
+	e2.pos = v2;
 	G -> arcos++; //aumento en 1 el numero de arcos
 	//agrego ambos elementos
 	append(G -> lista[v1], e2);
@@ -51,11 +53,11 @@ void setEdge(tGrafo *G,long int v1,long int v2){
 
 long int getMark (tNodo *v)
 {
-	return v->info->marca;
+	return v -> info->mark;
 }
 
 void setMark (tGrafo *G, long int i, long int marca){
-	G -> lista[i] -> head -> info -> mark = marca;
+	G -> lista[i] -> head->info -> mark = marca;
 }
 
 

@@ -8,7 +8,7 @@
 typedef struct grafo{
     long int vertices; //numero de vertices
     long int arcos; //numero de arcos
-    tLista *lista[]; //puntero a la lista
+    tLista **lista; //puntero a la lista
 } tGrafo;
 
 // inicializa un grafo para n vertices--S
