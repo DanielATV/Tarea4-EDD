@@ -64,7 +64,7 @@ int main(){
 	
 	
 	
-	//realizar operaciones que digan si cumple o no y la ciudad que cumpla si hay
+	
 
 	
 	printf("%d\n",consultas);
