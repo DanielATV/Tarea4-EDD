@@ -32,5 +32,5 @@ void setEdge (tGrafo *G, long int v1, long int v2);
 // necesitan marcar los vertices)---F
 long int getMark ( tNodo v); 
 // marca un vertice con un valor dado---D
-void setMark (tGrafo *G, long int i,long int marca); D
+void setMark (tGrafo *G, long int i,long int marca); 
 #endif
