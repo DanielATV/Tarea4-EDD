@@ -6,8 +6,8 @@
 void initGraph(tGrafo *G,long int n){
 	int i;
 	G->lista = (tLista **)malloc(sizeof(tLista *)*n);
-	for(i = 0; i < G->vertices; i++) G->lista[i] = crearLista();		
-	G->vertices = 0;
+	for(i = 0; i < n; i++) G->lista[i] = crearLista();		
+	G->vertices = n;
 	G->arcos = 0;
 }
 
