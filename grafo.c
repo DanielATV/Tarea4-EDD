@@ -11,7 +11,7 @@ void initGraph(tGrafo *G,long int n){
 
 void destroyGraph (tGrafo *G){	
 	int i;
-	for(i = 0; i < G->vertice; i++) clearL(G->lista[i]);		
+	for(i = 0; i < G->vertices; i++) clearL(G->lista[i]);		
 	free((void *)G->lista);
 	G->vertices = 0;
 	G->arcos = 0;
