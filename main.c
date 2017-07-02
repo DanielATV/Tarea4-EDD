@@ -4,32 +4,45 @@
 #include "lista.h"
 #include "grafo.h"
 int main(){
-	/*
-	int num_ciuds;
-	int num_caminos;
+	
+	long int num_ciuds;
+	long int num_caminos;
 	scanf("%d",&num_ciuds);
 	scanf("%d",&num_caminos);
 	
-	int i,aux1,aux2;
+	long int i,aux1,aux2;
 	
 	tGrafo *G;
 	for (i=0; i < num_caminos;i++)
 	{
 		
-		scanf("%d %d",&aux1,&aux2);
+		scanf("%li %li",&aux1,&aux2);
 		//cambiar esto..
 		setEdge(G,aux1,aux2);
 
 	}
 
 	int consultas, j;
-	scanf("%d",&consultas);
+	scanf("%li",&consultas);
 	printf(consultas);
 	for (j=0,j<consultas;j++)
 	{
-		//FALTA SCANEAR NUM AMIGOS ... Y LOS QUE SIGUEN
-		char *consulta;
-		scanf("%s",consulta);
+		
+		long int num_amigos, k;
+		scanf("%li",&num_amigos);
+		
+		long int *ciudades;
+		ciudades = (long int*)malloc(sizeof(long int)*num_amigos);
+		for(k=0;k<num_amigos,k++)
+		{
+			scanf( "%li",&ciudades[k]);
+
+		}
+
+		//ACA SE TIENEN LAS CIUDADES		
+
+
+
 		//------------------
 		
 		long int ciudad_cumple;	
@@ -57,7 +70,7 @@ int main(){
 	printf("%d\n",consultas);
 	if (cumple) printf("%d\n",ciudad_cumple\n);
 	else	printf("%d\n",num_ciuds);
-	*/
+	
 	return 0;
 
 
