@@ -1,7 +1,9 @@
-#include "grafo.h"
 #include "lista.h"
+#include "grafo.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-void initGraph(tGrado *G,long int n){
+void initGraph(tGrafo *G,long int n){
 	G->lista = (tLista *)malloc(sizeof(tLista)*n);
 	G->vertices = 0;
 	G->arcos = 0;
