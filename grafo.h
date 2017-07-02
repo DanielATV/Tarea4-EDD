@@ -12,7 +12,7 @@ typedef struct grafo{
 } tGrafo;
 
 // inicializa un grafo para n vertices--S
-void initGraph (tGrafo *G, long int n); 
+tGrafo *initGraph (long int n); 
 // libera la memoria utilizada por un grafo--F
 void destroyGraph (tGrafo *G); 
 // retorna el numero de vertices en el grafo--D
