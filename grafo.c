@@ -53,11 +53,11 @@ void setEdge(tGrafo *G,long int v1,long int v2){
 
 long int getMark (tNodo *v)
 {
-	return v -> info->mark;
+	return v -> info.mark;
 }
 
 void setMark (tGrafo *G, long int i, long int marca){
-	G -> lista[i] -> head->info -> mark = marca;
+	G -> lista[i] -> head->info.mark = marca;
 }
 
 
