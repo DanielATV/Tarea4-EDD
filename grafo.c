@@ -3,12 +3,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void initGraph(tGrafo *G,long int n){
-	int i;
-	G->lista = (tLista **)malloc(sizeof(tLista *)*n);
-	for(i = 0; i < G->vertices; i++) G->lista[i] = crearLista();		
-	G->vertices = 0;
-	G->arcos = 0;
+tGrafo *initGraph(long int n){
+	long int i;
+	tGrafo *nuevo;
+	
+	nuevo = malloc(sizeof(tGrafo *));
+	nuevo->vertices = n;
+	nuevo->arcos = 0;
+	nuevo ->lista = (tLista **)malloc(sizeof(tLista *) *n);
+	
+	for(i = 0; i < n ; i++) nuevo->lista[i] = crearLista();		
+	return nuevo;
 }
 
 void destroyGraph (tGrafo *G){	
