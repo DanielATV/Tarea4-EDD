@@ -24,9 +24,7 @@ void destroyGraph (tGrafo *G){
 }
 
 long int nVertex (tGrafo *G){
-	int n;
-	n = G -> vertices;
-	return n;
+	return G -> vertices;
 }
 
 long int nEdges(tGrafo *G){
