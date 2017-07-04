@@ -59,12 +59,7 @@ long int getMark (tNodo *v)
 {
 	return *(v -> info.mark);
 }
-/*
-long int getMark (long int lugar)
-{
-	return *(G ->lista[lugar] -> head -> info.mark);
-}
-*/
+
 void setMark (tGrafo *G, long int i, long int marca){
 	*(G -> lista[i] -> head->info.mark) = marca;
 }
