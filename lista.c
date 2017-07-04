@@ -124,12 +124,12 @@ void clearL(tLista *l){
 
 	for(i =0; i < l->listSize ;i++){
 		aux2 = aux->sig;
-		//free((void *)aux->info.mark); TIRA SEGMENTATION FAULT!
 		free((void *)aux);
 		aux = aux2;
 
 	}
-
+	
+	free((void *)l->head->info.mark);
 	l->head->sig = NULL;
 	l->tail = l->head;
 	l->curr = l->head;
