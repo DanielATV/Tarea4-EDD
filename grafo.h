@@ -2,7 +2,6 @@
 #define __grafo_h__
 
 #include "lista.h"
-#include <stdio.h>
 
 //estructura del grafo
 typedef struct grafo{
@@ -12,25 +11,25 @@ typedef struct grafo{
 } tGrafo;
 
 // inicializa un grafo para n vertices--S
-tGrafo *initGraph (long int n); 
+tGrafo *initGraph (long int);
 // libera la memoria utilizada por un grafo--F
-void destroyGraph (tGrafo *G); 
+void destroyGraph (tGrafo *);
 // retorna el numero de vertices en el grafo--D
-long int nVertex (tGrafo *G); 
+long int nVertex (tGrafo *);
 // retorna el numero de arcos en el grafo--S
-long int nEdges (tGrafo *G); 
+long int nEdges (tGrafo *);
 // Devuelve el primer vecino de un vertice v dado (asume que los
 // vecinos de un vertice estan ordenados por número de vertice)--D
-tNodo *nextg (tNodo *v); 
+tNodo *nextg (tNodo *);
 // devuelve el vecino siguiente (i+1) a uno dado (i).
 // Retorna el numero total de vertices si es que no existe--D
-tNodo *first (tGrafo *G, long int i); 
+tNodo *first (tGrafo *, long int);
 // agrega un nuevo arco al grafo entre vertices v1 y v2 (no se
 // pueden agregar nuevos vertices)--S
-void setEdge (tGrafo *G, long int v1, long int v2); 
+void setEdge (tGrafo *, long int, long int);
 // obtiene la marca asignada a un vertice dado (ciertos algoritmos
 // necesitan marcar los vertices)---F
-long int getMark ( tNodo *v); 
+long int getMark ( tNodo *);
 // marca un vertice con un valor dado---D
-void setMark (tGrafo *G, long int i,long int marca); 
+void setMark (tGrafo *, long int ,long int);
 #endif

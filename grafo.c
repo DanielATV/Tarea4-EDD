@@ -1,4 +1,3 @@
-#include "lista.h"
 #include "grafo.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,19 +5,19 @@
 tGrafo *initGraph(long int n){
 	long int i;
 	tGrafo *nuevo;
-	
 	nuevo = malloc(sizeof(tGrafo *));
 	nuevo->vertices = n;
 	nuevo->arcos = 0;
 	nuevo ->lista = (tLista **)malloc(sizeof(tLista *) *n);
-	
-	for(i = 0; i < n ; i++) nuevo->lista[i] = crearLista();		
+
+
+	for(i = 0; i < n ; i++) nuevo->lista[i] = crearLista();
 	return nuevo;
 }
 
-void destroyGraph (tGrafo *G){	
+void destroyGraph (tGrafo *G){
 	int i;
-	for(i = 0; i < G->vertices; i++) clearL(G->lista[i]);		
+	for(i = 0; i < G->vertices; i++) clearL(G->lista[i]);
 	free((void *)G->lista);
 	G->vertices = 0;
 	G->arcos = 0;
@@ -49,7 +48,9 @@ void setEdge(tGrafo *G,long int v1,long int v2){
 	elemento e1,e2;
 	// modifico ambos elementos
 	e1.pos = v1;
+	e1.mark = G->lista[v1]->head->info.mark;
 	e2.pos = v2;
+	e2.mark = G->lista[v2]->head->info.mark;
 	G -> arcos++; //aumento en 1 el numero de arcos
 	//agrego ambos elementos
 	append(G -> lista[v1], e2);
@@ -58,11 +59,14 @@ void setEdge(tGrafo *G,long int v1,long int v2){
 
 long int getMark (tNodo *v)
 {
-	return v -> info.mark;
+	return *(v -> info.mark);
 }
-
+/*
+long int getMark (long int lugar)
+{
+	return *(G ->lista[lugar] -> head -> info.mark);
+}
+*/
 void setMark (tGrafo *G, long int i, long int marca){
-	G -> lista[i] -> head->info.mark = marca;
+	*(G -> lista[i] -> head->info.mark) = marca;
 }
-
-
