@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 tGrafo *initGraph(long int n){
 	long int i;
 	tGrafo *nuevo;
@@ -13,7 +14,7 @@ tGrafo *initGraph(long int n){
 
 	for(i = 0; i < n ; i++) nuevo->lista[i] = crearLista();
 	return nuevo;
-}
+
 
 void destroyGraph (tGrafo *G){
 	int i;
