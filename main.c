@@ -3,60 +3,23 @@
 #include "lista.h"
 #include "grafo.h"
 
+//lo uso para hacer pruebas
 int main(){
-	int num_ciuds;
-	int num_caminos;
-	scanf("%d",&num_ciuds);
-	scanf("%d",&num_caminos);
-	
-	int i,aux1,aux2;
-	
+	long int i;
 	tGrafo *G;
-	for (i=0; i < num_caminos;i++)
-	{
-		
-		scanf("%d %d",&aux1,&aux2);
-		//cambiar esto..
-		setEdge(G,aux1,aux2);
-
-	}
-
-	int consultas, j;
-	scanf("%d",&consultas);
-	printf(consultas);
-	for (j=0,j<consultas;j++)
-	{
-		//FALTA SCANEAR NUM AMIGOS ... Y LOS QUE SIGUEN
-		char *consulta;
-		scanf("%s",consulta);
-		//------------------
-		
-		long int ciudad_cumple;	
-		bool cumple = 0; //false
-		long int num_vertices = nVertex(G);
-		long int maxmarcas =0;
-		for(i =0;i<num_vertices;i++){
-			if (getMark(G[i])>=maxmarcas)
-			{
-				maxmarcas =getMark(G[i]); 
-				ciudad_cumple=i;
-			}
-		}
-		
-		if (maxmarcas==num_amigos)
-			printf("%d\n",i);
-		else	printf("%d\n",num_ciuds);
-	}
-	
-	
-	
-	//realizar operaciones que digan si cumple o no y la ciudad que cumpla si hay
-
-	
-	printf("%d\n",consultas);
-	if (cumple) printf("%d\n",ciudad_cumple\n);
-	else	printf("%d\n",num_ciuds);
-	
+	tNodo *w;
+	i = 10000;
+	G = initGraph(i); //crea el grafo
+	printf("%ld\n",nVertex(G));
+	setMark(G,12,1234);
+	setEdge(G,14,12);
+	//basicamente recorro los vecinos de 14 para ver sus marcas, de esa forma ver
+	// si la marca de 12 es la misma.
+	for(w = first(G,14);w != NULL; w = nextg(w)) printf("%ld\n", getMark(w));
+	//printf("%ld\n",getMark() ); // esto es lo que te dije Fabian, quiero ver la
+	//marca de 12 pero no se como
+	printf("%ld\n",nEdges(G));
+	destroyGraph(G);
 	return 0;
 
 

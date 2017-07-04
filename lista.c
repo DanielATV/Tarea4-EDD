@@ -6,6 +6,7 @@
 tLista *crearLista(){
 	tLista* nueva = (tLista *) malloc(sizeof(tLista));
 	tNodo* dummy = (tNodo *)malloc(sizeof(tNodo));
+	dummy->info.mark = (long int *)malloc(sizeof(long int));
 	dummy->sig = NULL;
 	nueva->head = dummy;
 	nueva->tail = dummy;
@@ -33,7 +34,7 @@ int append(tLista *l, elemento item)
 {
 	tNodo *temp = (tNodo*)malloc(sizeof(tNodo));
 	if (temp==NULL) return 1;
-	else		
+	else
 		//(*temp).data = x;
 		temp->info = item;
 		temp->sig = NULL;
@@ -53,16 +54,16 @@ int append(tLista *l, elemento item)
 //funciona
 elemento lremove(tLista *l){
 	elemento item = l->curr->sig->info;
-	if (l->curr->sig->sig == NULL){ 
+	if (l->curr->sig->sig == NULL){
 		l->tail = l->curr;
 		l->curr->sig = NULL;
 	}
-	else{	
+	else{
 		l->curr->sig = l->curr->sig->sig;
 	}
 	l->pos --;
 	l->listSize--;
-	return item;	
+	return item;
 }
 //funciona
 void moveToStart(tLista* l){
@@ -71,12 +72,12 @@ void moveToStart(tLista* l){
 }
 //funciona
 void prev (tLista* l){
-	
+
 	tNodo *aux = l->head;
-	
+
 	while(aux->sig != l->curr){
 		aux = aux->sig;
-	
+
 	}
 	l->curr = aux;
 	l->pos = (l->pos)-1;
@@ -88,8 +89,8 @@ void movetoEnd(tLista *l){
 }
 //funciona
 int next(tLista *l)
-{	
-	if(l->curr->sig != l->tail) 
+{
+	if(l->curr->sig != l->tail)
 	{
 		l->curr = l->curr->sig;
 		l->pos++;
@@ -106,7 +107,7 @@ long int length(tLista *l){
 }
 //funciona
 long int currPos(tLista *l)
-{	
+{
 	return l->pos;
 }
 //funciona
@@ -128,9 +129,10 @@ void clearL(tLista *l){
 
 	}
 	
+	free((void *)l->head->info.mark);
 	l->head->sig = NULL;
 	l->tail = l->head;
 	l->curr = l->head;
 	l->listSize = 0;
 	l->pos = 0;
-} 
+}

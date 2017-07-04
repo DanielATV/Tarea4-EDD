@@ -1,10 +1,8 @@
 #ifndef __lista_h__
 #define __lista_h__
 
-#include <stdlib.h>
-
 typedef struct elemento{
-    long int mark;
+    long int *mark;
     long int pos;
 } elemento;
 
@@ -51,6 +49,5 @@ void moveToPos (tLista*,int);
 // obtiene el valor del elemento actual de la lista S LISTO
 elemento getValue (tLista*);
 // imprime la lista F
-
 void clearL(tLista*);
 #endif
