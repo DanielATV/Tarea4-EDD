@@ -68,7 +68,7 @@ int main(){
 		ciudad_cumple =-1;
 	
 		printf("Consulta: %li\n ",j);
-		marca_actual=0;
+		
 		scanf("%li",&num_amigos);
 		
 		
@@ -78,17 +78,27 @@ int main(){
 			scanf(" %li",&ciudades[k]);
 			
 		}
-		printf("Las ciudades son: ");
+		//printf("Las ciudades son: ");
+		
+		for (k=0;k<num_amigos;k++)
+		{
+			setMark(G,ciudades[k],-1);
+			// aca no se -------------------------------------------**************************************
+		}
+		
+		/*
 		for (z=0;z<num_ciuds;z++)
 		{
-			
+			marca_actual=0;
 			setMark(G,z,marca_actual);
 			for (k=0;k<num_amigos;k++)
 			{
 				if (z!= ciudades[k])
 				{
+					
 					marca_actual++;
 					setMark(G,z,marca_actual);
+					
 					
 					if (marca_actual==num_amigos)
 					{
@@ -99,8 +109,9 @@ int main(){
 			}
 
 		}
+		*/
 
-		
+		printf("resultado");
 		if (ciudad_cumple!=-1)
 			printf("%li\n",ciudad_cumple);
 		else	printf("%li\n",num_ciuds);
