@@ -61,10 +61,11 @@ int main(){
 	long int ciudad_cumple;	
 	long int maxmarca = 0;
 	long int z;
+	long int marca_actual;
 	for (j=0;j<consultas;j++)
 	{
 		printf("Consulta: %li\n ",j);
-		
+		marca_actual=0;
 		scanf("%li",&num_amigos);
 		
 		
@@ -84,7 +85,8 @@ int main(){
 			{
 				if (z!=k)
 				{
-				
+					marca_actual++;
+					setMark(G,z,marca_actual);
 				}
 			}
 			
