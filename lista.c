@@ -129,7 +129,7 @@ void clearL(tLista *l){
 		aux = aux2;
 
 	}
-	
+
 	free((void *)l->head->info.mark);
 	l->head->sig = NULL;
 	l->tail = l->head;

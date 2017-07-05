@@ -3,7 +3,7 @@
 
 typedef struct elemento{
     long int *mark;
-    long int pos;
+    long int ciudad;
 } elemento;
 
 typedef struct nodo {
