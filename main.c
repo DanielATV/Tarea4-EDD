@@ -20,7 +20,7 @@ int main(){
 	long int i,aux1,aux2;
 
 	tGrafo *G;
-
+	//pide el numero de ciudades(nodos) y caminos para
 	scanf("%li",&num_ciuds);
 	scanf("%li",&num_caminos);
 
@@ -50,7 +50,7 @@ int main(){
 				if (marca_actual != -1) {
 					marca_actual +=1;
 					setMark(G,z->info.ciudad,marca_actual);
-					if (marca_actual > maxmarca){
+					if (marca_actual >= maxmarca && ciudad_cumple > z->info.ciudad){
 						maxmarca = marca_actual;
 						ciudad_cumple = z->info.ciudad;
 					}
@@ -58,12 +58,13 @@ int main(){
 			}
 
 		}
-		if (ciudad_cumple!=-1)
+		//aca imprime en pantalla la ciudad que cumple
+		if (ciudad_cumple!=-1 && maxmarca == num_amigos)
 			printf("%li\n",ciudad_cumple);
-		else	printf("%li\n",num_ciuds);
+		else	printf("%li\n",num_ciuds); // si ninguna cumple, printea el num de ciudades.
 
-		resetMark(G);
-		free((void *)ciudades);
+		resetMark(G); // reseteamos las marcas para la siguiente peticion
+		free((void *)ciudades); //liberamos la memoria del arreglo de ciudades
 	}
 
 
