@@ -7,6 +7,7 @@ tLista *crearLista(){
 	tLista* nueva = (tLista *) malloc(sizeof(tLista));
 	tNodo* dummy = (tNodo *)malloc(sizeof(tNodo));
 	dummy->info.mark = (long int *)malloc(sizeof(long int));
+	*(dummy -> info.mark) = 0; 
 	dummy->sig = NULL;
 	nueva->head = dummy;
 	nueva->tail = dummy;
@@ -128,7 +129,7 @@ void clearL(tLista *l){
 		aux = aux2;
 
 	}
-	
+
 	free((void *)l->head->info.mark);
 	l->head->sig = NULL;
 	l->tail = l->head;

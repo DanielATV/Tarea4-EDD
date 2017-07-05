@@ -12,9 +12,12 @@ tGrafo *initGraph(long int n){
 	nuevo ->lista = (tLista **)malloc(sizeof(tLista *) *n);
 
 
-	for(i = 0; i < n ; i++) nuevo->lista[i] = crearLista();
+	for(i = 0; i < n ; i++){
+		 nuevo->lista[i] = crearLista();
+		 nuevo ->lista[i]->head -> info.pos = i;
+	 }
 	return nuevo;
-
+}
 
 void destroyGraph (tGrafo *G){
 	int i;
@@ -56,9 +59,9 @@ void setEdge(tGrafo *G,long int v1,long int v2){
 	append(G -> lista[v2], e1);
 }
 
-long int getMark (tNodo *v)
+long int getMark (tGrafo *G,long int posicion)
 {
-	return *(v -> info.mark);
+	return *(G->lista[posicion]->head-> info.mark);
 }
 
 void setMark (tGrafo *G, long int i, long int marca){
