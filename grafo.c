@@ -63,3 +63,9 @@ long int getMark (tGrafo *G,long int posicion)
 void setMark (tGrafo *G, long int i, long int marca){
 	*(G -> lista[i] -> head->info.mark) = marca;
 }
+
+void resetMark(tGrafo *G){
+	long int i,j;
+	i = G -> vertices;
+	for(j = 0;j<i;j++) *(G->lista[j]->head->info.mark) = 0;
+}

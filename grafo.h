@@ -32,4 +32,6 @@ void setEdge (tGrafo *, long int, long int);
 long int getMark (tGrafo *,long int);
 // marca un vertice con un valor dado---D
 void setMark (tGrafo *, long int ,long int);
+//resetea las marcas a 0
+void resetMark(tGrafo *);
 #endif
