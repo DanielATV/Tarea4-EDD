@@ -90,6 +90,12 @@ int main(){
 				marca_actual = getMark(G,ciudades[l[z]]);
 				marca_actual +=1;
 				setMark(G,ciudades[l[z]],marca_actual);
+				if (marca_actual > maxmarca)
+				{
+					maxmarca = marca_actual;
+					ciudad_cumple = ciudades[l[z]];
+				}
+				
 			
 			}
 			// aca no se -------------------------------------------**************************************
