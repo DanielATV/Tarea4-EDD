@@ -53,21 +53,19 @@ int main(){
 
 		for (k=0;k<num_amigos;k++)
 		{
-			tLista *l = G->lista[ciudades[k]];
 			for (z=first(G,ciudades[k]);z != NULL;z = nextg(z))
 			{
-				marca_actual = getMark(G,ciudades[l[z]]);
+				marca_actual = getMark(G,z->info.pos);
 				marca_actual +=1;
-				setMark(G,ciudades[l[z]],marca_actual);
+				setMark(G,z->info.pos,marca_actual);
 				if (marca_actual > maxmarca)
 				{
 					maxmarca = marca_actual;
-					ciudad_cumple = ciudades[l[z]];
-				}
+					ciudad_cumple = z->info.pos;
+				}z->info.pos
 
 
 			}
-			// aca no se -------------------------------------------**************************************
 		}
 
 		/*

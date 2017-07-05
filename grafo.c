@@ -11,11 +11,7 @@ tGrafo *initGraph(long int n){
 	nuevo->arcos = 0;
 	nuevo ->lista = (tLista **)malloc(sizeof(tLista *) *n);
 
-
-	for(i = 0; i < n ; i++){
-		 nuevo->lista[i] = crearLista();
-		 nuevo ->lista[i]->head -> info.pos = i;
-	 }
+	for(i = 0; i < n ; i++) nuevo->lista[i] = crearLista();
 	return nuevo;
 }
 
@@ -49,9 +45,9 @@ tNodo *first (tGrafo *G, long int i){
 void setEdge(tGrafo *G,long int v1,long int v2){
 	elemento e1,e2;
 	// modifico ambos elementos
-	e1.pos = v1;
+	e1.ciudad = v1;
 	e1.mark = G->lista[v1]->head->info.mark;
-	e2.pos = v2;
+	e2.ciudad = v2;
 	e2.mark = G->lista[v2]->head->info.mark;
 	G -> arcos++; //aumento en 1 el numero de arcos
 	//agrego ambos elementos
