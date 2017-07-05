@@ -86,8 +86,6 @@ int main(){
 		for (k=0;k<num_amigos;k++)
 		{
 			
-			
-			tLista *l = G->lista[ciudades[k]];
 			for(z = first(G,ciudades[k]);z != NULL; z = nextg(z))
 			{	
 				marca_actual = getMark(G,*(z->info.mark));
@@ -101,7 +99,8 @@ int main(){
 				
 			
 			}
-			// aca no se -------------------------------------------**************************************
+			
+			
 		}
 		
 		/*
