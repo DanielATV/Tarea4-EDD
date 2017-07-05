@@ -10,17 +10,17 @@ int main(){
 
 	long int consultas;
 
-	long int num_amigos, k;
-	long int *ciudades;
+	long int num_amigos, k,i;
+	long int ciudades;
 	long int ciudad_cumple;
 	long int maxmarca;
 	tNodo *z;
 	long int marca_actual;
 
-	long int i,aux1,aux2;
+	long int aux1,aux2;
 
 	tGrafo *G;
-	//pide el numero de ciudades(nodos) y caminos para
+	//pide el numero de ciudades(nodos) y caminos para trabajar.
 	scanf("%li",&num_ciuds);
 	scanf("%li",&num_caminos);
 
@@ -38,12 +38,10 @@ int main(){
 
 		scanf("%li",&num_amigos);
 
-		ciudades = (long int*)malloc(sizeof(long int)*num_amigos);
-
 		for(k=0;k<num_amigos;k++)
 		{
-			scanf(" %li",&ciudades[k]);
-			setMark(G,ciudades[k],-1);
+			scanf(" %li",&ciudades);
+			setMark(G,ciudades,-1);
 
 			for (z=first(G,ciudades[k]);z != NULL;z = nextg(z)){
 				marca_actual = getMark(G,z->info.ciudad);
@@ -64,9 +62,7 @@ int main(){
 		else	printf("%li\n",num_ciuds); // si ninguna cumple, printea el num de ciudades.
 
 		resetMark(G); // reseteamos las marcas para la siguiente peticion
-		free((void *)ciudades); //liberamos la memoria del arreglo de ciudades
 	}
-
 
 	destroyGraph(G);
 	return 0;
