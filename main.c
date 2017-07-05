@@ -60,7 +60,7 @@ int main(){
 
 		}
 		//aca imprime en pantalla la ciudad que cumple
-		if (ciudad_cumple!=-1 && maxmarca == num_amigos)
+		if (maxmarca == num_amigos)
 			printf("%li\n",ciudad_cumple);
 		else	printf("%li\n",num_ciuds); // si ninguna cumple, printea el num de ciudades.
 
