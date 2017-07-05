@@ -48,7 +48,10 @@ int main(){
 				if (marca_actual != -1) {
 					marca_actual +=1;
 					setMark(G,z->info.ciudad,marca_actual);
-					if (marca_actual >= maxmarca){
+					if (marca_actual == maxmarca && ciudad_cumple > z->info.ciudad){
+						ciudad_cumple = z->info.ciudad;
+					}
+					else if (marca_actual > maxmarca){
 						maxmarca = marca_actual;
 						ciudad_cumple = z->info.ciudad;
 					}
