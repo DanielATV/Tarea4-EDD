@@ -60,8 +60,10 @@ int main(){
 	long int *ciudades;
 	long int ciudad_cumple;	
 	long int maxmarca = 0;
-	long int z;
+	//long int z;
 	long int marca_actual;
+	
+	tNodo *z;
 	for (j=0;j<consultas;j++)
 	{
 		
@@ -76,24 +78,25 @@ int main(){
 		for(k=0;k<num_amigos;k++)
 		{
 			scanf(" %li",&ciudades[k]);
+			setMark(G,ciudades[k],-1);
 			
 		}
 		//printf("Las ciudades son: ");
 		
 		for (k=0;k<num_amigos;k++)
 		{
-			setMark(G,ciudades[k],-1);
+			
 			
 			tLista *l = G->lista[ciudades[k]];
-			for (z=0;z <length(l);z++)
+			for(z = first(G,ciudades[k]);z != NULL; z = nextg(z))
 			{	
-				marca_actual = getMark(G,ciudades[l[z]]);
+				marca_actual = getMark(G,*(z->info.mark));
 				marca_actual +=1;
-				setMark(G,ciudades[l[z]],marca_actual);
+				setMark(G,z->info.pos,marca_actual);
 				if (marca_actual > maxmarca)
 				{
 					maxmarca = marca_actual;
-					ciudad_cumple = ciudades[l[z]];
+					ciudad_cumple = z->info.pos;
 				}
 				
 			
