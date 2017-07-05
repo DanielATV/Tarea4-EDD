@@ -64,8 +64,11 @@ int main(){
 	long int marca_actual;
 	for (j=0;j<consultas;j++)
 	{
+		
+		ciudad_cumple =-1;
+	
 		printf("Consulta: %li\n ",j);
-		marca_actual=0;
+		
 		scanf("%li",&num_amigos);
 		
 		
@@ -75,51 +78,53 @@ int main(){
 			scanf(" %li",&ciudades[k]);
 			
 		}
-		printf("Las ciudades son: ");
-		for(k=0;k<num_amigos;k++)
+		//printf("Las ciudades son: ");
+		
+		for (k=0;k<num_amigos;k++)
 		{
+			setMark(G,ciudades[k],-1);
 			
-
-			printf("%li ",ciudades[k]);
-			for (z=0;z<num_ciuds;<++)
-			{
-				if (z!=k)
-				{
-					marca_actual++;
-					setMark(G,z,marca_actual);
-				}
+			tLista *l = G->lista[ciudades[k]];
+			for (z=0;z <length(l);z++)
+			{	
+				marca_actual = getMark(G,ciudades[l[z]]);
+				marca_actual +=1;
+				setMark(G,ciudades[l[z]],marca_actual);
+			
 			}
-			
+			// aca no se -------------------------------------------**************************************
 		}
-		printf("\n");
-		
-
-
-		//------------------
-		//AQUI HACER COSAS PARA MODIFICAR GRAFO
-
-		//----------------
-		
-
-		cumple = 0; //false
-		for (i = 0;i<num_amigos;i++)
-		{
-			if(getMark(G,i)>=maxmarca)
-			{
-				maxmarca = getMark(G,i);
-				ciudad_cumple=i;
-
-			}
-		}		
-
-
-
 		
 		/*
-		if (maxmarca==num_amigos)
-			printf("%li\n",i);
-		else	printf("%li\n",num_ciuds);
+		for (z=0;z<num_ciuds;z++)
+		{
+			marca_actual=0;
+			setMark(G,z,marca_actual);
+			for (k=0;k<num_amigos;k++)
+			{
+				if (z!= ciudades[k])
+				{
+					
+					marca_actual++;
+					setMark(G,z,marca_actual);
+					
+					
+					if (marca_actual==num_amigos)
+					{
+						ciudad_cumple=z;
+					}
+	
+				}
+			}
+
+		}
 		*/
+
+		printf("resultado");
+		if (ciudad_cumple!=-1)
+			printf("%li\n",ciudad_cumple);
+		else	printf("%li\n",num_ciuds);
+		
 	}
 	
 	
