@@ -43,12 +43,12 @@ int main(){
 			scanf(" %li",&ciudades);
 			setMark(G,ciudades,-1);
 
-			for (z=first(G,ciudades[k]);z != NULL;z = nextg(z)){
+			for (z=first(G,ciudades);z != NULL;z = nextg(z)){
 				marca_actual = getMark(G,z->info.ciudad);
 				if (marca_actual != -1) {
 					marca_actual +=1;
 					setMark(G,z->info.ciudad,marca_actual);
-					if (marca_actual >= maxmarca && ciudad_cumple > z->info.ciudad){
+					if (marca_actual >= maxmarca){
 						maxmarca = marca_actual;
 						ciudad_cumple = z->info.ciudad;
 					}
