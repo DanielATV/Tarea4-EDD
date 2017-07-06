@@ -69,3 +69,16 @@ void resetMark(tGrafo *G){
 	i = G -> vertices;
 	for(j = 0;j<i;j++) *(G->lista[j]->head->info.mark) = 0;
 }
+
+tGrafo *cpyGraph (tGrafo *G){
+	long int i;
+	tGrafo *nuevo;
+	tLista **l;
+	nuevo = malloc(sizeof(tGrafo *));
+	nuevo->vertices = G->vertices;
+	nuevo->arcos = G->arcos;
+	l = (tLista **)malloc(sizeof(tLista *) *G->vertices);
+	l = G->lista;
+	nuevo ->lista = l;
+	return nuevo;	
+}
