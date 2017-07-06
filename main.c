@@ -40,7 +40,7 @@ int main(){
             scanf(" %ld",&ciudades[k]);
             setMark(G,ciudades[k],-1);
         }
-
+//probar tda lista
         for (z=first(G,ciudades[0]);z != NULL;z = nextg(z)){
 
             if((getMark(G,z->info.ciudad) !=-1) && (ciudad_cumple > z->info.ciudad)){
