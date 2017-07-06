@@ -13,7 +13,6 @@ int main(){
     long int num_amigos, k,i,cont;
     long int *ciudades;
     long int ciudad_cumple;
-    long int nummarca;
     tNodo *z,*w;
     long int marca_actual;
     long int aux1,aux2;
@@ -31,25 +30,26 @@ int main(){
     scanf("%li",&consultas);
     printf("%ld\n",consultas );
     for (i=0;i<consultas;i++){
-    
+
         ciudad_cumple = num_ciuds;
-        nummarca = 0;
         scanf("%li",&num_amigos);
+
         ciudades = (long int*)malloc(sizeof(long int)*num_amigos);
-        
+
         for(k=0;k<num_amigos;k++){
-            scanf(" %li",&ciudades[k]); 
+            scanf(" %ld",&ciudades[k]);
             setMark(G,ciudades[k],-1);
         }
-        for (z=first(G,ciudades[k]);z != NULL;z = nextg(z)){
-            if(getMark(G,z->info.ciudad)!=-1 && ciudad_cumple > z->info.ciudad){
+
+        for (z=first(G,ciudades[0]);z != NULL;z = nextg(z)){
+          
+            if((getMark(G,z->info.ciudad) !=-1) && (ciudad_cumple > z->info.ciudad)){
                 cont = 0;
-                for(w= first(G,z->info.ciudad);w != NULL; w =nextg(w)){
-                    if(getMark(G,z->info.ciudad) == -1) cont ++;
-                }
+                for(w= first(G,z->info.ciudad);w != NULL; w =nextg(w)) 
+                    if(getMark(G,w->info.ciudad) == -1) cont ++;
                 if (cont == num_amigos){
                     ciudad_cumple = z->info.ciudad;
-                }
+
             }
         }
         // reseteamos las marcas para la siguiente peticion
@@ -58,9 +58,10 @@ int main(){
         }
         //aca imprime en pantalla la ciudad que cumple
         printf("%li\n",ciudad_cumple);
-        free((void*)ciudades);
+        free((void *)ciudades);
     }
 
     destroyGraph(G);
     return 0;
 }
+
