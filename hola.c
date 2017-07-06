@@ -14,7 +14,7 @@ int main(){
     long int *ciudades;
     long int ciudad_cumple;
     tNodo *z,*w;
-    long int marca_actual,menor;
+    long int marca_actual;
     long int aux1,aux2;
     tGrafo *G;
     //pide el numero de ciudades(nodos) y caminos para trabajar.
@@ -23,7 +23,7 @@ int main(){
 
     G =initGraph(num_ciuds);
     for (i=0; i < num_caminos;i++){
-        scanf("%ld %ld",&aux1,&aux2);
+        scanf("%li %li",&aux1,&aux2);
         setEdge(G,aux1,aux2);
     }
     //Aca empiezan las consultas
@@ -32,7 +32,6 @@ int main(){
     for (i=0;i<consultas;i++){
 
         ciudad_cumple = num_ciuds;
-        marca_actual = num_ciuds-1;
         scanf("%li",&num_amigos);
 
         ciudades = (long int*)malloc(sizeof(long int)*num_amigos);
@@ -40,15 +39,11 @@ int main(){
         for(k=0;k<num_amigos;k++){
             scanf(" %ld",&ciudades[k]);
             setMark(G,ciudades[k],-1);
-            if (nVecinos(G,ciudades[k]) < marca_actual){
-               marca_actual = nVecinos(G,ciudades[k]);
-               menor = ciudades[k];
-             }
         }
 
-        for (z=first(G,ciudades[menor]);z != NULL;z = nextg(z)){
+        for (z=first(G,ciudades[0]);z != NULL;z = nextg(z)){
 
-            if((getMark(G,z->info.ciudad) !=-1) && ((ciudad_cumple > z->info.ciudad) && nVecinos(G,z->info.ciudad) >= num_amigos)){
+            if((getMark(G,z->info.ciudad) !=-1) && (ciudad_cumple > z->info.ciudad)){
                 cont = 0;
                 for(w= first(G,z->info.ciudad);w != NULL; w =nextg(w))
                   if(getMark(G,w->info.ciudad) == -1) cont ++;

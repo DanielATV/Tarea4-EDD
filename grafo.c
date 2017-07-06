@@ -11,7 +11,10 @@ tGrafo *initGraph(long int n){
 	nuevo->arcos = 0;
 	nuevo ->lista = (tLista **)malloc(sizeof(tLista *) *n);
 
-	for(i = 0; i < n ; i++) nuevo->lista[i] = crearLista();
+	for(i = 0; i < n ; i++){
+		 nuevo->lista[i] = crearLista();
+		 nuevo->lista[i]->head->info.ciudad = i;
+	 }
 	return nuevo;
 }
 
@@ -43,16 +46,10 @@ tNodo *first (tGrafo *G, long int i){
 }
 
 void setEdge(tGrafo *G,long int v1,long int v2){
-	elemento e1,e2;
-	// modifico ambos elementos
-	e1.ciudad = v1;
-	e1.mark = G->lista[v1]->head->info.mark;
-	e2.ciudad = v2;
-	e2.mark = G->lista[v2]->head->info.mark;
 	G -> arcos++; //aumento en 1 el numero de arcos
 	//agrego ambos elementos
-	append(G -> lista[v1], e2);
-	append(G -> lista[v2], e1);
+	insert(G -> lista[v1], G->lista[v2]->head->info);
+	insert(G -> lista[v2], G->lista[v1]->head->info);
 }
 
 long int getMark (tGrafo *G,long int posicion)
@@ -68,4 +65,8 @@ void resetMark(tGrafo *G){
 	long int i,j;
 	i = G -> vertices;
 	for(j = 0;j<i;j++) *(G->lista[j]->head->info.mark) = 0;
+}
+
+long int nVecinos(tGrafo *G, long int ciudad){
+	return length(G -> lista[ciudad]);
 }
