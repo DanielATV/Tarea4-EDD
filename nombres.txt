@@ -1,0 +1,14 @@
+Nombre: Sebastian Godinez
+ROL: 201673520-8
+Paralelo: 200
+Programas: TDA y main.
+
+Nombre: Fabian Jimenez
+ROL: 201673503-8
+Paralelo: 200
+Programas: TDA y main.
+
+Nombre: Daniel Toro
+ROL: 201673595-k
+Paralelo: 200
+Programas: TDA y main.
