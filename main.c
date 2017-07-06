@@ -46,7 +46,7 @@ int main(){
              }
         }
 
-        for (z=first(G,ciudades[menor]);z != NULL;z = nextg(z)){
+        for (z=first(G,menor);z != NULL;z = nextg(z)){
 
             if((getMark(G,z->info.ciudad) !=-1) && ((ciudad_cumple > z->info.ciudad) && nVecinos(G,z->info.ciudad) >= num_amigos)){
                 cont = 0;
