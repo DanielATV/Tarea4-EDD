@@ -67,7 +67,7 @@ int main(){
 		if (maxmarca == num_amigos)printf("%li\n",ciudad_cumple);
 		else	printf("%li\n",num_ciuds); // si ninguna cumple, printea el num de ciudades.
 
-		destroyGraph(Gaux);
+
 
 		 // reseteamos las marcas para la siguiente peticion
 	}
