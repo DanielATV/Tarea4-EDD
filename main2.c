@@ -4,131 +4,110 @@
 #include "lista.h"
 #include "grafo.h"
 
-int main(){
-
-	/*
-	long int i;
-	tGrafo *G;
-	tNodo *w;
-	i = 10000;
-	G = initGraph(i); //crea el grafo
-	printf("%ld\n",nVertex(G));
-	setMark(G,12,1234);
-	setEdge(G,14,12);
-	//basicamente recorro los vecinos de 14 para ver sus marcas, de esa forma ver
-	// si la marca de 12 es la misma.
-	//for(w = first(G,14);w != NULL; w = nextg(w)) printf("%ld\n", getMark(w));
-	//printf("%ld\n",getMark() ); // esto es lo que te dije Fabian, quiero ver la
-	//marca de 12 pero no se como
-	printf("%ld\n",nEdges(G));
-
-
-
-	printf("%ld\n", getMark(G,12) );
-	destroyGraph(G);
-	return 0;
-	*/
-
-	
-	
+int main()
+{
 	long int num_ciuds;
 	long int num_caminos;
+
+	long int consultas;
+
+	long int num_amigos, k,i,cont, m;
+	long int *ciudades;
+	long int ciudad_cumple;
+	tNodo *z,*w;
+	long int marca_actual, max_marca;
+	
+	long int aux1,aux2;
+	tGrafo *G;
+	//pide el numero de ciudades(nodos) y caminos para trabajar.
 	scanf("%li",&num_ciuds);
 	scanf("%li",&num_caminos);
-	
-	printf("el grafo tiene %li ciudades y %li caminos \n\n",num_ciuds,num_caminos);
-	long int i,aux1,aux2;
-	
-	tGrafo *G;
+
 	G =initGraph(num_ciuds);
+	long int min_marca;
+	long int *origenes = (long int*)malloc(sizeof(long int)*num_ciuds);
+	long int *destinos = (long int*)malloc(sizeof(long int)*num_ciuds);
 	for (i=0; i < num_caminos;i++)
 	{
-		
-		scanf("%li %li",&aux1,&aux2);
-		//cambiar esto..
-		setEdge(G,aux1,aux2);
-		printf("agregado arco %li - %li \n",aux1,aux2);
-
+		scanf("%ld %ld",&origenes[i],&destinos[i]);
+		setEdge(G,origenes[i],destinos[i]);
 	}
-
-	long int consultas, j;
+	//Aca empiezan las consultas
 	scanf("%li",&consultas);
-	printf("numero consultas: %li\n",consultas);
-
-	int cumple;
-	long int num_amigos, k;
-	long int *ciudades;
-	long int ciudad_cumple;	
-	long int maxmarca = 0;
-	long int z;
-	long int marca_actual;
-	for (j=0;j<consultas;j++)
+	printf("%ld\n",consultas );
+	for (i=0;i<consultas;i++)
 	{
-		
-		ciudad_cumple =-1;
-	
-		printf("Consulta: %li\n ",j);
-		
+		min_marca = num_ciuds;
+
+		ciudad_cumple = num_ciuds;
 		scanf("%li",&num_amigos);
-		
-		
+
 		ciudades = (long int*)malloc(sizeof(long int)*num_amigos);
-		for(k=0;k<num_amigos;k++)
-		{
-			scanf(" %li",&ciudades[k]);
-			
-		}
-		//printf("Las ciudades son: ");
-		
-		for (k=0;k<num_amigos;k++)
-		{
+
+		for(k=0;k<num_amigos;k++){
+			scanf(" %ld",&ciudades[k]);
 			setMark(G,ciudades[k],-1);
-			// aca no se -------------------------------------------**************************************
 		}
-		
-		/*
-		for (z=0;z<num_ciuds;z++)
+		for(m = 0;m<num_ciuds;m++)
 		{
-			marca_actual=0;
-			setMark(G,z,marca_actual);
-			for (k=0;k<num_amigos;k++)
+
+			if (getMark(G,origenes[m])==-1	&& getMark(G,destinos[m])!=-1)
 			{
-				if (z!= ciudades[k])
-				{
-					
-					marca_actual++;
-					setMark(G,z,marca_actual);
-					
-					
-					if (marca_actual==num_amigos)
+				marca_actual = getMark(G,destinos[m]);
+				setMark(G,destinos[m],marca_actual+1);
+				marca_actual =0;
+			}	
+			else if (getMark(G,origenes[m]) !=-1	&& getMark(G,destinos[m])== 1)
+			{
+				marca_actual = getMark(G,origenes[m]);
+				setMark(G,origenes[m],marca_actual+1);
+				marca_actual =0;
+			}
+		}
+		for (z=first(G,ciudades[0]);z != NULL ; z = nextg(z) )
+		{
+			
+			if(getMark(G,z->info.ciudad) >= num_amigos && getMark(G,z->info.ciudad) < min_marca )
+			{
+				min_marca = getMark(G,z->info.ciudad);
+				ciudad_cumple = z->info.ciudad;
+				
+			}
+		
+		}
+
+
+		/*
+		for (z=first(G,ciudades[0]);z != NULL;z = nextg(z))
+		{
+
+			if((getMark(G,z->info.ciudad) !=-1) && (ciudad_cumple > z->info.ciudad))
+			{
+				cont = 0;
+				for(w= first(G,z->info.ciudad);w != NULL; w =nextg(w)) 
+					if(getMark(G,w->info.ciudad) == -1) 
 					{
-						ciudad_cumple=z;
+						cont ++;
 					}
-	
+				if (cont == num_amigos)
+				{
+					ciudad_cumple = z->info.ciudad;
 				}
 			}
-
 		}
 		*/
+        // reseteamos las marcas para la siguiente peticion
+		for(k=0;k<num_amigos;k++){
+			setMark(G,ciudades[k],0);
+		}
+        //aca imprime en pantalla la ciudad que cumple
+		printf("%li\n",ciudad_cumple);
+		free((void *)ciudades);
+		free((void *)origenes);
+		free((void *)destinos);
+    	}
 
-		printf("resultado");
-		if (ciudad_cumple!=-1)
-			printf("%li\n",ciudad_cumple);
-		else	printf("%li\n",num_ciuds);
-		
-	}
-	
-	
-	
-	
-
-	
-	//printf("%li\n",consultas);
-	/*
-	if (cumple) printf("%li\n",ciudad_cumple);
-	else	printf("%li\n",num_ciuds);
-	*/
+	destroyGraph(G);
 	return 0;
-
-
 }
+
