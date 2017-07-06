@@ -70,3 +70,20 @@ void resetMark(tGrafo *G){
 long int nVecinos(tGrafo *G, long int ciudad){
 	return length(G -> lista[ciudad]);
 }
+
+tGrafo *cpyGraph(tGrafo *G){
+	tGrafo *B;
+	elemento aux;
+	long int i;
+
+	aux.mark = (long int *)malloc(sizeof(long int));
+	B = initGraph(G->vertices);
+
+	for (i = 0; i < G->vertices;i++){
+		for(moveToStart(G->lista[i]); G->lista[i]->pos < G->lista[i]->listSize; next(G->lista[i])){
+			aux.ciudad = getValue(G->lista[i]).ciudad;
+			insert(G->lista[i],aux);
+		}
+	}
+	return B;
+}
