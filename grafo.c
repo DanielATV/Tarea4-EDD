@@ -82,7 +82,7 @@ tGrafo *subGraph(tGrafo *G, long int * amigos, long int num_amigos){
 	for (i = 0; i < num_amigos;i++){
 		for(moveToStart(G->lista[amigos[i]]); G->lista[i]->pos < G->lista[i]->listSize; next(G->lista[amigos[i]])){
 			aux.ciudad = getValue(G->lista[amigos[i]]).ciudad;
-			insert(G->lista[amigos[i]],aux);
+			insert(B->lista[amigos[i]],aux);
 		}
 	}
 	free((void *)aux.mark);
