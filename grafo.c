@@ -42,7 +42,7 @@ tNodo *first (tGrafo *G, long int i){
 }
 
 void setEdge(tGrafo *G,long int v1,long int v2){
-	//G -> arcos++; //aumento en 1 el numero de arcos
+	G -> arcos++; //aumento en 1 el numero de arcos
 	//agrego ambos elementos
 	insert(G -> lista[v1], G->lista[v2]->head->info);
 	insert(G -> lista[v2], G->lista[v1]->head->info);
