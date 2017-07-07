@@ -58,7 +58,11 @@ int main()
 				marca_actual = getMark(G,destinos[m]);
 				marca_actual++;
 				setMark(G,destinos[m],marca_actual);
-				marca_actual=0;
+				
+				
+				
+	
+			
 				
 			}	
 			else if (getMark(G,origenes[m]) !=-1	&& getMark(G,destinos[m])== -1)
@@ -68,9 +72,16 @@ int main()
 				marca_actual = getMark(G,origenes[m]);
 				marca_actual++;
 				setMark(G,origenes[m],marca_actual);
-				marca_actual=0;
+				
 				
 			}
+
+			
+			if (marca_actual == num_amigos)
+			{
+				G->tiene=1;
+			}
+			marca_actual=0;
 		}
 		/*
 		for(m = 0;m<num_ciuds;m++)
@@ -78,20 +89,27 @@ int main()
 			printf("    %li\n\n",getMark(G,m));
 			
 		}*/
-		for (z=first(G,ciudades[0]);z != NULL ; z = nextg(z) )
+		if (G->tiene==0)
 		{
-			//printf("-\n");
-			//printf("vecino de 0: %li\n",z->info.ciudad);
-			if(getMark(G,z->info.ciudad) == num_amigos && getMark(G,z->info.ciudad) < min_marca )
-			{
-				min_marca = getMark(G,z->info.ciudad);
-				ciudad_cumple = z->info.ciudad;
-				//printf("--\n");
-				
-			}
-			//if (nextg(z) == NULL) 	z=NULL;
-			//printf("asdafsd");
+			printf("%li\n",num_ciuds);
+
 		}
+		else
+			for (z=first(G,ciudades[0]);z != NULL ; z = nextg(z) )
+			{
+				//printf("-\n");
+				//printf("vecino de 0: %li\n",z->info.ciudad);
+			
+				if(getMark(G,z->info.ciudad) == num_amigos && getMark(G,z->info.ciudad) < min_marca )
+				{
+					min_marca = getMark(G,z->info.ciudad);
+					ciudad_cumple = z->info.ciudad;
+					//printf("--\n");
+				
+				}
+				//if (nextg(z) == NULL) 	z=NULL;
+				//printf("asdafsd");
+			}
 
 
 		
@@ -104,10 +122,10 @@ int main()
 		free((void *)ciudades);
 		
     	}
-
-	destroyGraph(G);
 	free((void *)origenes);
 	free((void *)destinos);
+	//destroyGraph(G);
+	
 
 	return 0;
 }
