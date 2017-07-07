@@ -29,13 +29,17 @@ tNodo *first (tGrafo *, long int);
 void setEdge (tGrafo *, long int, long int);
 // obtiene la marca asignada a un vertice dado (ciertos algoritmos
 // necesitan marcar los vertices)---F
-long int getMark (tGrafo *,long int);
+long int getMark (tGrafo *,tNodo *);
 // marca un vertice con un valor dado---D
-void setMark (tGrafo *, long int ,long int);
+void setMark (tGrafo *, tNodo *,long int);
 //resetea las marcas a 0
 void resetMark(tGrafo *);
 //imprime los numeros de vecinos de un nodo
 long int nVecinos(tGrafo *, long int);
 //crea una copia del grafo
 tGrafo *cpyGraph(tGrafo *);
+//a partir de un nodo entrega la posicion de este
+long int CNodo(tNodo *);
+//a partir de una posicion entrega el nodo con la informacion
+tNodo *posG(tGrafo *,long int);
 #endif

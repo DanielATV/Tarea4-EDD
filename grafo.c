@@ -48,49 +48,48 @@ tNodo *first (tGrafo *G, long int i){
 void setEdge(tGrafo *G,long int v1,long int v2){
 	G -> arcos++; //aumento en 1 el numero de arcos
 	//agrego ambos elementos
-	insert(G -> lista[v1], G->lista[v2]->head->info);
-	insert(G -> lista[v2], G->lista[v1]->head->info);
+	insort(G -> lista[v1], G->lista[v2]->head->info);
+	insort(G -> lista[v2], G->lista[v1]->head->info);
 }
 
-long int getMark (tGrafo *G,long int posicion)
+long int getMark (tGrafo *G,tNodo *nodo)
 {
-	return *(G->lista[posicion]->head-> info.mark);
+	return G->lista[nodo -> info.ciudad]->head-> info.mark;
 }
 
-void setMark (tGrafo *G, long int i, long int marca){
-	*(G -> lista[i] -> head->info.mark) = marca;
+void setMark (tGrafo *G, tNodo *nodo, long int marca){
+	G -> lista[nodo->info.ciudad] -> head->info.mark = marca;
 }
 
 void resetMark(tGrafo *G){
 	long int i,j;
 	i = G -> vertices;
-	for(j = 0;j<i;j++) *(G->lista[j]->head->info.mark) = 0;
+	for(j = 0;j<i;j++) G->lista[j]->head->info.mark = 0;
 }
 
 long int nVecinos(tGrafo *G, long int ciudad){
 	return length(G -> lista[ciudad]);
 }
 
+
 tGrafo *cpyGraph(tGrafo *G){
     tGrafo *B;
     long int i;
-    elemento aux;
 
-    B = malloc(sizeof(tGrafo *));
+    B = (tGrafo *)malloc(sizeof(tGrafo));
     B->vertices = G->vertices;
     B->arcos = G->arcos;
     B ->lista = (tLista **)malloc(sizeof(tLista *) * G->vertices);
-
-		for(i = 0; i < G->vertices ; i++){
-				B->lista[i] = crearLista();
-		}
     for(i = 0; i < G->vertices ; i++){
-				
-				for(moveToStart(G->lista[i]); G->lista[i]->pos < G->lista[i]->listSize; next(G->lista[i])){
-						aux.mark = B->lista[getValue(G->lista[i]).ciudad]->head->info.mark;
-						aux.ciudad = getValue(G->lista[i]).ciudad;
-						insert(B->lista[i],aux);
-				}
+        B->lista[i]->head->sig = G->lista[i]->head->sig;
     }
     return B;
+}
+
+long int CNodo(tNodo *nodo){
+	return nodo->info.ciudad;
+}
+
+tNodo *posG(tGrafo *G,long int i){
+	return G->lista[i]->head;
 }
