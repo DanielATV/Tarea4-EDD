@@ -25,8 +25,8 @@ int main()
 
 	G =initGraph(num_ciuds);
 	long int min_marca;
-	long int *origenes = (long int*)malloc(sizeof(long int)*num_ciuds);
-	long int *destinos = (long int*)malloc(sizeof(long int)*num_ciuds);
+	long int *origenes = (long int*)malloc(sizeof(long int)*num_caminos);
+	long int *destinos = (long int*)malloc(sizeof(long int)*num_caminos);
 	for (i=0; i < num_caminos;i++)
 	{
 		scanf("%ld %ld",&origenes[i],&destinos[i]);
@@ -38,7 +38,7 @@ int main()
 	for (i=0;i<consultas;i++)
 	{
 		min_marca = num_ciuds;
-
+		marca_actual=0;
 		ciudad_cumple = num_ciuds;
 		scanf("%li",&num_amigos);
 
@@ -48,66 +48,67 @@ int main()
 			scanf(" %ld",&ciudades[k]);
 			setMark(G,ciudades[k],-1);
 		}
-		for(m = 0;m<num_ciuds;m++)
+		for(m = 0;m<num_caminos;m++)
 		{
-
+			//printf("origen marca: %li, destino marca: %li \n",getMark(G,origenes[m]),getMark(G,destinos[m]));
 			if (getMark(G,origenes[m])==-1	&& getMark(G,destinos[m])!=-1)
 			{
+				//printf("a\n");
+				//printf("origen es: %li -- destino es:%li  \n",origenes[m],destinos[m]);
 				marca_actual = getMark(G,destinos[m]);
-				setMark(G,destinos[m],marca_actual+1);
-				marca_actual =0;
+				marca_actual++;
+				setMark(G,destinos[m],marca_actual);
+				marca_actual=0;
+				
 			}	
-			else if (getMark(G,origenes[m]) !=-1	&& getMark(G,destinos[m])== 1)
+			else if (getMark(G,origenes[m]) !=-1	&& getMark(G,destinos[m])== -1)
 			{
+				//printf("b\n");
+				//printf("origen es: %li -- destino es:%li  \n",origenes[m],destinos[m]);
 				marca_actual = getMark(G,origenes[m]);
-				setMark(G,origenes[m],marca_actual+1);
-				marca_actual =0;
+				marca_actual++;
+				setMark(G,origenes[m],marca_actual);
+				marca_actual=0;
+				
 			}
 		}
+		/*
+		for(m = 0;m<num_ciuds;m++)
+		{
+			printf("    %li\n\n",getMark(G,m));
+			
+		}*/
 		for (z=first(G,ciudades[0]);z != NULL ; z = nextg(z) )
 		{
-			
-			if(getMark(G,z->info.ciudad) >= num_amigos && getMark(G,z->info.ciudad) < min_marca )
+			//printf("-\n");
+			//printf("vecino de 0: %li\n",z->info.ciudad);
+			if(getMark(G,z->info.ciudad) == num_amigos && getMark(G,z->info.ciudad) < min_marca )
 			{
 				min_marca = getMark(G,z->info.ciudad);
 				ciudad_cumple = z->info.ciudad;
+				//printf("--\n");
 				
 			}
+			//if (nextg(z) == NULL) 	z=NULL;
+			//printf("asdafsd");
+		}
+
+
 		
-		}
-
-
-		/*
-		for (z=first(G,ciudades[0]);z != NULL;z = nextg(z))
-		{
-
-			if((getMark(G,z->info.ciudad) !=-1) && (ciudad_cumple > z->info.ciudad))
-			{
-				cont = 0;
-				for(w= first(G,z->info.ciudad);w != NULL; w =nextg(w)) 
-					if(getMark(G,w->info.ciudad) == -1) 
-					{
-						cont ++;
-					}
-				if (cont == num_amigos)
-				{
-					ciudad_cumple = z->info.ciudad;
-				}
-			}
-		}
-		*/
         // reseteamos las marcas para la siguiente peticion
-		for(k=0;k<num_amigos;k++){
-			setMark(G,ciudades[k],0);
+		for(k=0;k<num_ciuds;k++){
+			setMark(G,k,0);
 		}
         //aca imprime en pantalla la ciudad que cumple
 		printf("%li\n",ciudad_cumple);
 		free((void *)ciudades);
-		free((void *)origenes);
-		free((void *)destinos);
+		
     	}
 
 	destroyGraph(G);
+	free((void *)origenes);
+	free((void *)destinos);
+
 	return 0;
 }
 
