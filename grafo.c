@@ -51,8 +51,8 @@ void setEdge(tGrafo *G,long int v1,long int v2){
 	e2.mark = G->lista[v2]->head->info.mark;
 	G -> arcos++; //aumento en 1 el numero de arcos
 	//agrego ambos elementos
-	append(G -> lista[v1], e2);
-	append(G -> lista[v2], e1);
+	insert(G -> lista[v1], e2);
+	insert(G -> lista[v2], e1);
 }
 
 long int getMark (tGrafo *G,long int posicion)
