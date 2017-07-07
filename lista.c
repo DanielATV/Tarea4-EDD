@@ -125,14 +125,14 @@ void clearL(tLista *l){
 		aux2 = aux->sig;
 		free((void *)aux);
 		aux = aux2;
-
 	}
-
 	l->head->sig = NULL;
 	l->tail = l->head;
 	l->curr = l->head;
+	free((void *)l->head);
 	l->listSize = 0;
 	l->pos = 0;
+	free((void *)l);
 }
 
 int insort(tLista *l, elemento item){

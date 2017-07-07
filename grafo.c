@@ -24,6 +24,7 @@ void destroyGraph (tGrafo *G){
 	free((void *)G->lista);
 	G->vertices = 0;
 	G->arcos = 0;
+	free((void*) G);
 }
 
 long int nVertex (tGrafo *G){
@@ -46,10 +47,10 @@ tNodo *first (tGrafo *G, long int i){
 }
 
 void setEdge(tGrafo *G,long int v1,long int v2){
-	G -> arcos++; //aumento en 1 el numero de arcos
+	//G -> arcos++; //aumento en 1 el numero de arcos
 	//agrego ambos elementos
-	insort(G -> lista[v1], G->lista[v2]->head->info);
-	insort(G -> lista[v2], G->lista[v1]->head->info);
+	insert(G -> lista[v1], G->lista[v2]->head->info);
+	insert(G -> lista[v2], G->lista[v1]->head->info);
 }
 
 long int getMark (tGrafo *G,tNodo *nodo)
@@ -61,12 +62,13 @@ void setMark (tGrafo *G, tNodo *nodo, long int marca){
 	G -> lista[nodo->info.ciudad] -> mark = marca;
 }
 
+/*
 void resetMark(tGrafo *G){
 	long int i,j;
 	i = G -> vertices;
 	for(j = 0;j<i;j++) G->lista[j]->mark = 0;
 }
-
+*/
 long int nVecinos(tGrafo *G, long int ciudad){
 	return length(G -> lista[ciudad]);
 }
