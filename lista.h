@@ -2,7 +2,6 @@
 #define __lista_h__
 
 typedef struct elemento{
-    long int mark;
     long int ciudad;
 } elemento;
 
@@ -18,6 +17,7 @@ typedef struct Lista{
     tNodo *curr; //Elemento actual
     long int listSize; //Tamaño de la lista
     long int pos; // Posición actual en la lista
+    long int mark; //marca
 } tLista;
 
 // crea la lista LISTO

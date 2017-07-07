@@ -37,7 +37,7 @@ void resetMark(tGrafo *);
 //imprime los numeros de vecinos de un nodo
 long int nVecinos(tGrafo *, long int);
 //crea una copia del grafo
-tGrafo *cpyGraph(tGrafo *);
+//tGrafo *cpyGraph(tGrafo *);
 //a partir de un nodo entrega la posicion de este
 long int CNodo(tNodo *);
 //a partir de una posicion entrega el nodo con la informacion

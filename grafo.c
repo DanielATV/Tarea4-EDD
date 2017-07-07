@@ -54,38 +54,39 @@ void setEdge(tGrafo *G,long int v1,long int v2){
 
 long int getMark (tGrafo *G,tNodo *nodo)
 {
-	return G->lista[nodo -> info.ciudad]->head-> info.mark;
+	return G->lista[nodo -> info.ciudad]->mark;
 }
 
 void setMark (tGrafo *G, tNodo *nodo, long int marca){
-	G -> lista[nodo->info.ciudad] -> head->info.mark = marca;
+	G -> lista[nodo->info.ciudad] -> mark = marca;
 }
 
 void resetMark(tGrafo *G){
 	long int i,j;
 	i = G -> vertices;
-	for(j = 0;j<i;j++) G->lista[j]->head->info.mark = 0;
+	for(j = 0;j<i;j++) G->lista[j]->mark = 0;
 }
 
 long int nVecinos(tGrafo *G, long int ciudad){
 	return length(G -> lista[ciudad]);
 }
 
-
+/*
 tGrafo *cpyGraph(tGrafo *G){
-    tGrafo *B;
-    long int i;
+	long int i;
+	tGrafo *nuevo;
+	nuevo = malloc(sizeof(tGrafo *));
+	nuevo->vertices = G->vertices;
+	nuevo->arcos = 0;
+	nuevo ->lista = (tLista **)malloc(sizeof(tLista *) *G->vertices);
 
-    B = (tGrafo *)malloc(sizeof(tGrafo));
-    B->vertices = G->vertices;
-    B->arcos = G->arcos;
-    B ->lista = (tLista **)malloc(sizeof(tLista *) * G->vertices);
-    for(i = 0; i < G->vertices ; i++){
-        B->lista[i]->head->sig = G->lista[i]->head->sig;
-    }
-    return B;
+	for(i = 0; i < n ; i++){
+		 nuevo->lista[i] = crearLista();
+		 nuevo->lista[i]->head->info.ciudad = i;
+	 }
+	return nuevo;
 }
-
+*/
 long int CNodo(tNodo *nodo){
 	return nodo->info.ciudad;
 }

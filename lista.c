@@ -6,13 +6,13 @@
 tLista *crearLista(){
 	tLista* nueva = (tLista *) malloc(sizeof(tLista));
 	tNodo* dummy = (tNodo *)malloc(sizeof(tNodo));
-	dummy -> info.mark = 0;
-	dummy->sig = NULL;
-	nueva->head = dummy;
-	nueva->tail = dummy;
-	nueva->curr = dummy;
-	nueva->listSize = 0;
-	nueva->pos = 0;
+	nueva -> mark = 0;
+	dummy -> sig = NULL;
+	nueva -> head = dummy;
+	nueva -> tail = dummy;
+	nueva -> curr = dummy;
+	nueva -> listSize = 0;
+	nueva -> pos = 0;
 	return nueva;
 }
 //funciona
@@ -35,7 +35,6 @@ int append(tLista *l, elemento item)
 	tNodo *temp = (tNodo*)malloc(sizeof(tNodo));
 	if (temp==NULL) return 1;
 	else
-		//(*temp).data = x;
 		temp->info = item;
 		temp->sig = NULL;
 		if (l->head == NULL) l->head = temp;
