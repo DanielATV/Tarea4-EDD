@@ -71,20 +71,26 @@ long int nVecinos(tGrafo *G, long int ciudad){
 	return length(G -> lista[ciudad]);
 }
 
-tGrafo *subGraph(tGrafo *G, long int * amigos, long int num_amigos){
-	tGrafo *B;
-	elemento aux;
-	long int i;
+tGrafo *cpyGraph(tGrafo *G){
+    tGrafo *B;
+    long int i;
+    elemento aux;
 
-	aux.mark = (long int *)malloc(sizeof(long int));
-	B = initGraph(G->vertices);
+    B = malloc(sizeof(tGrafo *));
+    B->vertices = G->vertices;
+    B->arcos = G->arcos;
+    B ->lista = (tLista **)malloc(sizeof(tLista *) * G->vertices);
 
-	for (i = 0; i < num_amigos;i++){
-		for(moveToStart(G->lista[amigos[i]]); G->lista[i]->pos < G->lista[i]->listSize; next(G->lista[amigos[i]])){
-			aux.ciudad = getValue(G->lista[amigos[i]]).ciudad;
-			insert(B->lista[amigos[i]],aux);
+		for(i = 0; i < G->vertices ; i++){
+				B->lista[i] = crearLista();
 		}
-	}
-	free((void *)aux.mark);
-	return B;
+    for(i = 0; i < G->vertices ; i++){
+				
+				for(moveToStart(G->lista[i]); G->lista[i]->pos < G->lista[i]->listSize; next(G->lista[i])){
+						aux.mark = B->lista[getValue(G->lista[i]).ciudad]->head->info.mark;
+						aux.ciudad = getValue(G->lista[i]).ciudad;
+						insert(B->lista[i],aux);
+				}
+    }
+    return B;
 }
