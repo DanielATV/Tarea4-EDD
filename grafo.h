@@ -33,7 +33,7 @@ long int getMark (tGrafo *,tNodo *);
 // marca un vertice con un valor dado---D
 void setMark (tGrafo *, tNodo *,long int);
 //resetea las marcas a 0
-void resetMark(tGrafo *);
+//void resetMark(tGrafo *);
 //imprime los numeros de vecinos de un nodo
 long int nVecinos(tGrafo *, long int);
 //crea una copia del grafo
