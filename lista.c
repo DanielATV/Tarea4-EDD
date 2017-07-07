@@ -6,8 +6,7 @@
 tLista *crearLista(){
 	tLista* nueva = (tLista *) malloc(sizeof(tLista));
 	tNodo* dummy = (tNodo *)malloc(sizeof(tNodo));
-	dummy->info.mark = (long int *)malloc(sizeof(long int));
-	*(dummy -> info.mark) = 0; 
+	dummy -> info.mark = 0;
 	dummy->sig = NULL;
 	nueva->head = dummy;
 	nueva->tail = dummy;
@@ -130,10 +129,39 @@ void clearL(tLista *l){
 
 	}
 
-	free((void *)l->head->info.mark);
 	l->head->sig = NULL;
 	l->tail = l->head;
 	l->curr = l->head;
 	l->listSize = 0;
 	l->pos = 0;
+}
+
+int insort(tLista *l, elemento item){
+	tNodo *aux;
+	if(l->curr->sig != NULL){
+		moveToStart(l);
+		while(l->pos < l->listSize){
+			if(item.ciudad > getValue(l).ciudad) next(l);
+			else break;
+		}
+		aux = l->curr->sig;
+		l->curr->sig = (tNodo *)malloc(sizeof(tNodo));
+
+		l->curr->sig->info = item;
+		l->curr->sig->sig = aux;
+		if(l->curr == l->tail) l->tail = l->curr->sig;
+		l->listSize++;
+		return 0; //La operacion ocurrio con exito
+
+	}
+	else{
+		aux = l->curr->sig;
+		l->curr->sig = (tNodo *)malloc(sizeof(tNodo));
+
+		l->curr->sig->info = item;
+		l->curr->sig->sig = aux;
+		if(l->curr == l->tail) l->tail = l->curr->sig;
+		l->listSize++;
+		return 0; //La operacion ocurrio con exito
+	}
 }

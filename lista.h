@@ -2,7 +2,7 @@
 #define __lista_h__
 
 typedef struct elemento{
-    long int *mark;
+    long int mark;
     long int ciudad;
 } elemento;
 
@@ -50,4 +50,6 @@ void moveToPos (tLista*,int);
 elemento getValue (tLista*);
 // imprime la lista F
 void clearL(tLista*);
+//agrega un elemento en la lista y ademas lo hace en orden (test)
+int insort(tLista *,elemento);
 #endif
