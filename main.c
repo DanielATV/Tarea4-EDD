@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "lista.h"
 #include "grafo.h"
 
 int main(){
@@ -18,16 +17,17 @@ int main(){
     long int aux1,aux2;
     tGrafo *G;
     //pide el numero de ciudades(nodos) y caminos para trabajar.
-    scanf("%li",&num_ciuds);
-    scanf("%li",&num_caminos);
-
+    scanf("%li\n",&num_ciuds);
     G =initGraph(num_ciuds);
+
+    scanf("%li\n",&num_caminos);
     for (i=0; i < num_caminos;i++){
-        scanf("%ld %ld",&aux1,&aux2);
+        scanf("%ld %ld\n",&aux1,&aux2);
         setEdge(G,aux1,aux2);
     }
-    //Aca empiezan las consultas
-    scanf("%li",&consultas);
+
+    //Aca empiezan las consultas!!
+    scanf("%li\n",&consultas);
     printf("%ld\n",consultas );
 
     for (i = 0 ; i < consultas ; i++){
@@ -47,20 +47,20 @@ int main(){
 
         //ahora para el amigo con menos vecinos, recorro los vecinos
         for (z=first(G,menor);z != NULL;z = nextg(z)){
-            /*la idea es no recorrer un vecino que corresponda a uno de los amigos
+            //la idea es no recorrer un vecino que corresponda a uno de los amigos
             //y donde los vecinos de los vecinos del menor sean mas o iguales a
-            la cantidadde amigos sino no tiene sentido recorrerlo*/
+            //la cantidadde amigos sino no tiene sentido recorrerlo
             if((getMark(G,z) != i) && ((ciudad_cumple > CNodo(z)) && nVecinos(G,CNodo(z)) >= num_amigos)){
                 cont = 0;
-                for(w= first(G,CNodo(z));w != NULL; w =nextg(w))
+                for(w = first(G,CNodo(z)); w != NULL; w =nextg(w))
                   if(getMark(G,w) == i) cont ++;
                 if (cont == num_amigos)
                   ciudad_cumple = CNodo(z);
             }
         }
         //aca imprime en pantalla la ciudad que cumple
-        printf("%li\n",ciudad_cumple); /*no necesita condiciones, porque si nadie
-        cumple ciudad_cumple predeterminadamente sera la cantidad de ciudades*/
+        printf("%li\n",ciudad_cumple); //no necesita condiciones, porque si nadie
+        //cumple ciudad_cumple predeterminadamente sera la cantidad de ciudades
     }
 
     destroyGraph(G);
