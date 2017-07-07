@@ -6,8 +6,9 @@
 tLista *crearLista(){
 	tLista* nueva = (tLista *) malloc(sizeof(tLista));
 	tNodo* dummy = (tNodo *)malloc(sizeof(tNodo));
-	nueva -> mark = 0;
+
 	dummy -> sig = NULL;
+	nueva -> mark = -1;
 	nueva -> head = dummy;
 	nueva -> tail = dummy;
 	nueva -> curr = dummy;
@@ -17,8 +18,11 @@ tLista *crearLista(){
 }
 //funciona
 int insert(tLista *l, elemento item){
-	tNodo *aux = l->curr->sig;
+	tNodo *aux;
+
+	aux = l->curr->sig;
 	l->curr->sig = (tNodo *)malloc(sizeof(tNodo));
+
 	if (l->curr->sig == NULL){
 		l->curr->sig = aux;
 		return 1; //Retorna 1 si falla.
@@ -30,8 +34,7 @@ int insert(tLista *l, elemento item){
 	return 0; //La operacion ocurrio con exito
 }
 //funciona
-int append(tLista *l, elemento item)
-{
+int append(tLista *l, elemento item){
 	tNodo *temp = (tNodo*)malloc(sizeof(tNodo));
 	if (temp==NULL) return 1;
 	else
@@ -105,8 +108,7 @@ long int length(tLista *l){
 	return l->listSize;
 }
 //funciona
-long int currPos(tLista *l)
-{
+long int currPos(tLista *l){
 	return l->pos;
 }
 //funciona
@@ -118,20 +120,15 @@ elemento getValue(tLista *l){
 //funciona
 void clearL(tLista *l){
 	int i;
-	tNodo *aux = l->head->sig;
-	tNodo *aux2;
+	tNodo *aux2, *aux;
 
+	aux = l->head->sig;
 	for(i =0; i < l->listSize ;i++){
 		aux2 = aux->sig;
 		free((void *)aux);
 		aux = aux2;
 	}
-	l->head->sig = NULL;
-	l->tail = l->head;
-	l->curr = l->head;
 	free((void *)l->head);
-	l->listSize = 0;
-	l->pos = 0;
 	free((void *)l);
 }
 

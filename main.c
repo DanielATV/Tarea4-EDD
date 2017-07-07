@@ -11,7 +11,7 @@ int main(){
     long int consultas;
 
     long int num_amigos, k,i,cont;
-    long int *ciudades;
+    long int ciudades;
     long int ciudad_cumple;
     tNodo *z,*w;
     long int marca_actual,menor;
@@ -29,40 +29,38 @@ int main(){
     //Aca empiezan las consultas
     scanf("%li",&consultas);
     printf("%ld\n",consultas );
-    for (i=0;i<consultas;i++){
+
+    for (i = 0 ; i < consultas ; i++){
 
         ciudad_cumple = num_ciuds;
         marca_actual = num_ciuds-1;
         scanf("%li",&num_amigos);
 
-        ciudades = (long int*)malloc(sizeof(long int)*num_amigos);
-
-        for(k=0;k<num_amigos;k++){
-            scanf(" %ld",&ciudades[k]);
-            setMark(G,posG(G,ciudades[k]),-1);
-            if (nVecinos(G,ciudades[k]) < marca_actual){
-               marca_actual = nVecinos(G,ciudades[k]);
-               menor = ciudades[k];
+        for(k = 0; k < num_amigos ; k++){
+            scanf(" %ld",&ciudades);
+            setMark(G,posG(G,ciudades), i);
+            if (nVecinos(G,ciudades) < marca_actual){
+               marca_actual = nVecinos(G,ciudades);
+               menor = ciudades;
              }
         }
 
+        //ahora para el amigo con menos vecinos, recorro los vecinos
         for (z=first(G,menor);z != NULL;z = nextg(z)){
-
-            if((getMark(G,z) !=-1) && nVecinos(G,CNodo(z)) >= num_amigos){
+            /*la idea es no recorrer un vecino que corresponda a uno de los amigos
+            //y donde los vecinos de los vecinos del menor sean mas o iguales a
+            la cantidadde amigos sino no tiene sentido recorrerlo*/
+            if((getMark(G,z) != i) && ((ciudad_cumple > CNodo(z)) && nVecinos(G,CNodo(z)) >= num_amigos)){
                 cont = 0;
                 for(w= first(G,CNodo(z));w != NULL; w =nextg(w))
-                  if(getMark(G,w) == -1) cont ++;
+                  if(getMark(G,w) == i) cont ++;
                 if (cont == num_amigos)
-                    ciudad_cumple = CNodo(z);
+                  ciudad_cumple = CNodo(z);
             }
         }
-        // reseteamos las marcas para la siguiente peticion
-        for(k=0;k<num_amigos;k++){
-            setMark(G,posG(G,ciudades[k]),0);
-        }
         //aca imprime en pantalla la ciudad que cumple
-        printf("%li\n",ciudad_cumple);
-        free((void *)ciudades);
+        printf("%li\n",ciudad_cumple); /*no necesita condiciones, porque si nadie
+        cumple ciudad_cumple predeterminadamente sera la cantidad de ciudades*/
     }
 
     destroyGraph(G);
