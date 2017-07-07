@@ -20,13 +20,15 @@ int main()
 	long int aux1,aux2;
 	tGrafo *G;
 	//pide el numero de ciudades(nodos) y caminos para trabajar.
-	scanf("%li",&num_ciuds);
+	scanf("%ld",&num_ciuds);
 	scanf("%li",&num_caminos);
-
+	printf("asdaf1\n");
 	G =initGraph(num_ciuds);
+	printf("asdaf1.1\n");
 	long int min_marca;
 	long int *origenes = (long int*)malloc(sizeof(long int)*num_caminos);
 	long int *destinos = (long int*)malloc(sizeof(long int)*num_caminos);
+	printf("asdaf2\n");
 	for (i=0; i < num_caminos;i++)
 	{
 		scanf("%ld %ld",&origenes[i],&destinos[i]);
