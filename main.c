@@ -39,7 +39,7 @@ int main(){
 
         for(k=0;k<num_amigos;k++){
             scanf(" %ld",&ciudades[k]);
-            setMark(G,ciudades[k],-1);
+            setMark(G,posG(G,ciudades[k]),-1);
             if (nVecinos(G,ciudades[k]) < marca_actual){
                marca_actual = nVecinos(G,ciudades[k]);
                menor = ciudades[k];
@@ -48,17 +48,17 @@ int main(){
 
         for (z=first(G,menor);z != NULL;z = nextg(z)){
 
-            if((getMark(G,z->info.ciudad) !=-1) && ((ciudad_cumple > z->info.ciudad) && nVecinos(G,z->info.ciudad) >= num_amigos)){
+            if((getMark(G,z) !=-1) && nVecinos(G,CNodo(z)) >= num_amigos){
                 cont = 0;
-                for(w= first(G,z->info.ciudad);w != NULL; w =nextg(w))
-                  if(getMark(G,w->info.ciudad) == -1) cont ++;
+                for(w= first(G,CNodo(z));w != NULL; w =nextg(w))
+                  if(getMark(G,w) == -1) cont ++;
                 if (cont == num_amigos)
-                    ciudad_cumple = z->info.ciudad;
+                    ciudad_cumple = CNodo(z);
             }
         }
         // reseteamos las marcas para la siguiente peticion
         for(k=0;k<num_amigos;k++){
-            setMark(G,ciudades[k],0);
+            setMark(G,posG(G,ciudades[k]),0);
         }
         //aca imprime en pantalla la ciudad que cumple
         printf("%li\n",ciudad_cumple);
