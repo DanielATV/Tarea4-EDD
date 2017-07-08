@@ -34,6 +34,6 @@ long int getMark (tGrafo *,long int);
 void setMark (tGrafo *, long int ,long int);
 //resetea las marcas a 0
 void resetMark(tGrafo *);
-// copia el grafo
-tGrafo *cpyGraph (tGrafo *);
+// dados dos vértices, indica si existe un arco entre ellos
+int isEdge (tGrafo *, long int , long int);
 #endif
