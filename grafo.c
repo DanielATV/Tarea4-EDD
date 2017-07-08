@@ -70,15 +70,11 @@ void resetMark(tGrafo *G){
 	for(j = 0;j<i;j++) *(G->lista[j]->head->info.mark) = 0;
 }
 
-tGrafo *cpyGraph (tGrafo *G){
-	long int i;
-	tGrafo *nuevo;
-	tLista **l;
-	nuevo = malloc(sizeof(tGrafo *));
-	nuevo->vertices = G->vertices;
-	nuevo->arcos = G->arcos;
-	l = (tLista **)malloc(sizeof(tLista *) *G->vertices);
-	l = G->lista;
-	nuevo ->lista = l;
-	return nuevo;	
+int isEdge (tGrafo *G, long int m, long int n){
+	tNodo *a;
+	for (a=first(G,m);a != NULL;a = nextg(a)){
+		if (a->info.ciudad == n) return 0;
+	}
+	return -1;
 }
+
