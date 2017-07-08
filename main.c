@@ -5,73 +5,62 @@
 #include "grafo.h"
 
 int main(){
-	long int num_ciuds;
-	long int num_caminos;
+    long int num_ciuds;
+    long int num_caminos;
 
-	long int consultas;
+    long int consultas;
 
-	long int num_amigos, k,i;
-	long int ciudades;
-	long int ciudad_cumple;
-	long int maxmarca;
-	tNodo *z;
-	long int marca_actual;
+    long int num_amigos, k,i,cont;
+    long int *ciudades;
+    long int ciudad_cumple;
+    tNodo *z,*w;
+    long int aux1,aux2;
+    tGrafo *G;
+    //pide el numero de ciudades(nodos) y caminos para trabajar.
+    scanf("%li",&num_ciuds);
+    scanf("%li",&num_caminos);
 
-	long int aux1,aux2;
+    G =initGraph(num_ciuds);
+    for (i=0; i < num_caminos;i++){
+        scanf("%li %li",&aux1,&aux2);
+        setEdge(G,aux1,aux2);
+    }
+    //Aca empiezan las consultas
+    scanf("%li",&consultas);
+    printf("%ld\n",consultas );
+    for (i=0;i<consultas;i++){
 
-	tGrafo *G;
-	tGrafo *Gaux;
-	//pide el numero de ciudades(nodos) y caminos para trabajar.
-	scanf("%li",&num_ciuds);
-	scanf("%li",&num_caminos);
+        ciudad_cumple = num_ciuds;
+        scanf("%li",&num_amigos);
 
-	G =initGraph(num_ciuds);
-	for (i=0; i < num_caminos;i++){
-		scanf("%li %li",&aux1,&aux2);
-		setEdge(G,aux1,aux2);
-	}
-	resetMark(G);
-	//Aca empiezan las consultas
-	scanf("%li",&consultas);
-	printf("%ld\n",consultas );
-	for (i=0;i<consultas;i++){
-		Gaux = cpyGraph(G);
+        ciudades = (long int*)malloc(sizeof(long int)*num_amigos);
 
-		ciudad_cumple =-1;
-		maxmarca = 0;
+        for(k=0;k<num_amigos;k++){
+            scanf(" %ld",&ciudades[k]);
+            setMark(G,ciudades[k],-1);
+        }
 
-		scanf("%li",&num_amigos);
+        for (z=first(G,ciudades[0]);z != NULL;z = nextg(z)){
 
-		for(k=0;k<num_amigos;k++)
-		{
-			scanf(" %li",&ciudades);
-			setMark(Gaux,ciudades,-1);
+            for(k=1;k<num_amigos;k++){
+                if (isEdge(G,z->info.ciudad,ciudades[k]) == -1)break;
 
-			for (z=first(Gaux,ciudades);z != NULL;z = nextg(z)){
-				marca_actual = getMark(Gaux,z->info.ciudad);
-				if (marca_actual != -1) {
-					marca_actual +=1;
-					setMark(Gaux,z->info.ciudad,marca_actual);
-					if (marca_actual == maxmarca && ciudad_cumple > z->info.ciudad){
-						ciudad_cumple = z->info.ciudad;
-					}
-					else if (marca_actual > maxmarca){
-						maxmarca = marca_actual;
-						ciudad_cumple = z->info.ciudad;
-					}
-				}
-			}
+                else{
+                    if ((z->info.ciudad < ciudad_cumple) && (getMark(G,z->info.ciudad) !=-1)) ciudad_cumple = z->info.ciudad;
+                }
 
-		}
-		//aca imprime en pantalla la ciudad que cumple
-		if (maxmarca == num_amigos)printf("%li\n",ciudad_cumple);
-		else	printf("%li\n",num_ciuds); // si ninguna cumple, printea el num de ciudades.
+            }
+            
+        }
+        // reseteamos las marcas para la siguiente peticion
+        for(k=0;k<num_amigos;k++){
+            setMark(G,ciudades[k],0);
+        }
+        //aca imprime en pantalla la ciudad que cumple
+        printf("%li\n",ciudad_cumple);
+        free((void *)ciudades);
+    }
 
-
-
-		 // reseteamos las marcas para la siguiente peticion
-	}
-
-	destroyGraph(G);
-	return 0;
+    destroyGraph(G);
+    return 0;
 }
