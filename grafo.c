@@ -69,3 +69,8 @@ void resetMark(tGrafo *G){
 	i = G -> vertices;
 	for(j = 0;j<i;j++) *(G->lista[j]->head->info.mark) = 0;
 }
+
+int isEdge (tGrafo *G, long int m, long int n){
+	return 0;
+}
+
