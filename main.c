@@ -14,7 +14,6 @@ int main(){
     long int *ciudades;
     long int ciudad_cumple;
     tNodo *z,*w;
-    long int marca_actual;
     long int aux1,aux2;
     tGrafo *G;
     //pide el numero de ciudades(nodos) y caminos para trabajar.
