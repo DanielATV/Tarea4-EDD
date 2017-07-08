@@ -20,26 +20,22 @@ long int nVertex (tGrafo *);
 long int nEdges (tGrafo *);
 // Devuelve el primer vecino de un vertice v dado (asume que los
 // vecinos de un vertice estan ordenados por número de vertice)--D
-tNodo *nextg (tNodo *);
+elemento first (tGrafo *, long int);
 // devuelve el vecino siguiente (i+1) a uno dado (i).
-// Retorna el numero total de vertices si es que no existe--D
-tNodo *first (tGrafo *, long int);
+// Retorna NULL si es que no existe--D
+elemento nextg (tGrafo *, long int);
 // agrega un nuevo arco al grafo entre vertices v1 y v2 (no se
 // pueden agregar nuevos vertices)--S
 void setEdge (tGrafo *, long int, long int);
 // obtiene la marca asignada a un vertice dado (ciertos algoritmos
 // necesitan marcar los vertices)---F
-long int getMark (tGrafo *,tNodo *);
+long int getMark (tGrafo *,long int);
 // marca un vertice con un valor dado---D
-void setMark (tGrafo *, tNodo *,long int);
+void setMark (tGrafo *, long int,long int);
 //resetea las marcas a 0
 void resetMark(tGrafo *);
 //imprime los numeros de vecinos de un nodo
 long int nVecinos(tGrafo *, long int);
-//crea una copia del grafo
-//tGrafo *cpyGraph(tGrafo *);
-//a partir de un nodo entrega la posicion de este
-long int CNodo(tNodo *);
-//a partir de una posicion entrega el nodo con la informacion
-tNodo *posG(tGrafo *,long int);
+//entrega los vecinos de un nodo a partir de su posicion
+tLista *Vecinos(tGrafo *,long int);
 #endif

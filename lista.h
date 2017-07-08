@@ -52,4 +52,6 @@ elemento getValue (tLista*);
 void clearL(tLista*);
 //agrega un elemento en la lista y ademas lo hace en orden (test)
 int insort(tLista *,elemento);
+//realiza la Intersection entre dos listas
+tLista *Intersection(tLista *,tLista *);
 #endif
