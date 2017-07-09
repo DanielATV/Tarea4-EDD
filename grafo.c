@@ -82,15 +82,35 @@ elemento nextg (tGrafo *G,long int i){
 		return aux;
 	}
 	else return getValue(G->lista[i]);
-} //quiero cambiar para que entregue elemento y aplique el next() de lista
-//entrega un nodo como primer vecino de una ciudad,
-//este primer vecino es arbitrario si se guarda con insert()
+} 
+/*****
+* TipoFunción NombreFunción
+******
+* Resumen Función
+******
+* Input:
+* tipoParámetro NombreParámetro : Descripción Parámetro
+* .......
+******
+* Returns:
+* TipoRetorno, Descripción retorno
+*****/
 elemento first (tGrafo *G, long int i){
 	moveToStart(G->lista[i]);
 	return getValue(G -> lista[i]);
-} //quiero que entregue un elemento y haga moveToStart() de la lista
-//agrega un arco a 2 ciudades dadas, se puede cambiar por insort()
-//para que sea en orden
+} 
+/*****
+* TipoFunción NombreFunción
+******
+* Resumen Función
+******
+* Input:
+* tipoParámetro NombreParámetro : Descripción Parámetro
+* .......
+******
+* Returns:
+* TipoRetorno, Descripción retorno
+*****/
 void setEdge(tGrafo *G,long int v1,long int v2){
 	G -> arcos++; //aumento en 1 el numero de arcos
 	//agrego ambos elementos
@@ -98,29 +118,80 @@ void setEdge(tGrafo *G,long int v1,long int v2){
 	insert(G -> lista[v2], G->lista[v1]->head->info);
 
 }
-//obtengo la marca a partir de un nodo
+/*****
+* TipoFunción NombreFunción
+******
+* Resumen Función
+******
+* Input:
+* tipoParámetro NombreParámetro : Descripción Parámetro
+* .......
+******
+* Returns:
+* TipoRetorno, Descripción retorno
+*****/
 long int getMark (tGrafo *G,long int ciudad){
 	return G->lista[ciudad]->mark;
 }
-//agrega a un nodo una marca, lo guarda como variable de la lista
+/*****
+* TipoFunción NombreFunción
+******
+* Resumen Función
+******
+* Input:
+* tipoParámetro NombreParámetro : Descripción Parámetro
+* .......
+******
+* Returns:
+* TipoRetorno, Descripción retorno
+*****/
 void setMark (tGrafo *G, long int ciudad, long int marca){
 	G -> lista[ciudad] -> mark = marca;
 }
-//resetea todas las marcas de todos los nodos
+/*****
+* TipoFunción NombreFunción
+******
+* Resumen Función
+******
+* Input:
+* tipoParámetro NombreParámetro : Descripción Parámetro
+* .......
+******
+* Returns:
+* TipoRetorno, Descripción retorno
+*****/
 void resetMark(tGrafo *G){
 	long int j;
 	for(j = 0;j< G -> vertices ;j++) G->lista[j]->mark = 0;
 }
-//entrega el numero de vecinos que tiene un nodo
+/*****
+* TipoFunción NombreFunción
+******
+* Resumen Función
+******
+* Input:
+* tipoParámetro NombreParámetro : Descripción Parámetro
+* .......
+******
+* Returns:
+* TipoRetorno, Descripción retorno
+*****/
 long int nVecinos(tGrafo *G, long int ciudad){
 	return length(G -> lista[ciudad]);
 }
-//entrega una lista con los vecinos de la posicion de una lista
+/*****
+* TipoFunción NombreFunción
+******
+* Resumen Función
+******
+* Input:
+* tipoParámetro NombreParámetro : Descripción Parámetro
+* .......
+******
+* Returns:
+* TipoRetorno, Descripción retorno
+*****/
 tLista *Vecinos(tGrafo *G,long int ciudad){
 	return G->lista[ciudad];
-}
-
-int isEdge (tGrafo *G, long int m, long int n){
-	return 0;
 }
 
