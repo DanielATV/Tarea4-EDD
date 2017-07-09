@@ -17,7 +17,7 @@
 tGrafo *initGraph(long int n){
 	long int i;
 	tGrafo *nuevo;
-	nuevo = malloc(sizeof(tGrafo *));
+	nuevo = (tGrafo *)malloc(sizeof(tGrafo));
 	nuevo->vertices = n;
 	nuevo->arcos = 0;
 	nuevo ->lista = (tLista **)malloc(sizeof(tLista *) *n);
