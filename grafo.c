@@ -84,7 +84,7 @@ long int nEdges(tGrafo *G){
 * long int i: Vertice al que se desea obtener el primer vecino.
 ******
 * Returns:
-* elemento , entrega el primer elemento vecino de la lista i.
+* elemento , entrega el primer elemento vecino de la lista.
 *****/
 elemento first (tGrafo *G, long int i){
 	moveToStart(G->lista[i]);
@@ -100,7 +100,7 @@ elemento first (tGrafo *G, long int i){
 * long int i: Vertice al que se desea obtener el primer vecino.
 ******
 * Returns:
-* elemento , entrega  el siguiente elemento vecino de la lista i.
+* elemento , entrega  el siguiente elemento vecino de la lista.
 *****/
 elemento nextg (tGrafo *G,long int i){
 	elemento aux;
