@@ -164,5 +164,14 @@ tLista *Intersection(tLista *A,tLista *B){
 	for(moveToStart(A); currPos(A) < length(A); next(A))
 		for(moveToStart(B); currPos(B) < length(B); next(B))
 			if( getValue(A).ciudad == getValue(B).ciudad) insert(C, getValue(A));
+	free((void *)A);
 	return C;
+}
+
+tLista *cpyL(tLista *l){
+	tLista *aux;
+	crearLista(aux);
+	for(moveToStart(l); currPos(l) < length(l); next(l))
+		insert(aux, getValue(l));
+	return aux;
 }

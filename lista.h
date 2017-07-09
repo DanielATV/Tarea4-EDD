@@ -54,4 +54,6 @@ void clearL(tLista*);
 int insort(tLista *,elemento);
 //realiza la Intersection entre dos listas
 tLista *Intersection(tLista *,tLista *);
+//realiza una copia de una lista dada
+tLista *cpyL(tLista *);
 #endif

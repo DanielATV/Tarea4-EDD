@@ -8,13 +8,13 @@ int main(){
     long int num_caminos;
 
     long int consultas;
+
     long int num_amigos, k,i;
     long int ciudad;
     long int ciudad_cumple;
     long int aux1,aux2;
     tGrafo *G;
     tLista *inter;
-    tLista *interAux;
     //pide el numero de ciudades(nodos) y caminos para trabajar.
     scanf("%li\n",&num_ciuds);
     G =initGraph(num_ciuds);
@@ -27,7 +27,7 @@ int main(){
     //Aca empiezan las consultas!!
     scanf("%li\n",&consultas);
     printf("%ld\n",consultas );
-    
+
     for (i = 0 ; i < consultas ; i++){
 
         ciudad_cumple = num_ciuds; //lo definimos de esta manera para si nadie
@@ -35,17 +35,11 @@ int main(){
         scanf("%li",&num_amigos);
         //para el primero lo pido aparte para crear la lista inicial de personas
         scanf("%ld",&ciudad);
-        inter = Vecinos(G, ciudad); //de esta manera tengo con quien hacer interseccion
+        inter = cpyL(Vecinos(G, ciudad)); //de esta manera tengo con quien hacer interseccion
+        // ahora intersecto esta lista con los amigos
         for(k = 0; k < num_amigos -1 ; k++){
             scanf(" %ld",&ciudad);
             inter = Intersection(inter,Vecinos(G,ciudad));
-            /*
-            interAux = Intersection(inter,Vecinos(G,ciudad));
-            clear(inter);
-            inter = cpyList(interAux);
-            clear(interAux);
-            */
-
         }
         //si algun valor sobrevive despues de la interseccion se busca el menor
         //de ellos para ser la ciudad que cumpla
@@ -53,13 +47,12 @@ int main(){
           for (moveToStart(inter); currPos(inter) < length(inter); next(inter))
             if (getValue(inter).ciudad < ciudad_cumple)
               ciudad_cumple = getValue(inter).ciudad;
-              
+
         //aca imprime en pantalla la ciudad que cumple
         printf("%li\n",ciudad_cumple); //no necesita condiciones, porque si nadie
         //cumple ciudad_cumple predeterminadamente sera la cantidad de ciudades
         clearL(inter);
     }
-
 
     destroyGraph(G);
     return 0;
