@@ -12,7 +12,7 @@
 * long int n : Numero de vertices.
 ******
 * Returns:
-* tGrafo *, Puntero al grafo creado.
+* tGrafo *, puntero al grafo creado.
 *****/
 tGrafo *initGraph(long int n){
 	long int i;
@@ -37,7 +37,7 @@ tGrafo *initGraph(long int n){
 * tGrafo *G : Puntero al grafo que se desea liberar la memoria.
 ******
 * Returns:
-* void, No retorna parametro.
+* void, no retorna parametro.
 *****/
 void destroyGraph (tGrafo *G){
 	int i;
@@ -46,31 +46,29 @@ void destroyGraph (tGrafo *G){
 	free((void*) G);
 }
 /*****
-* TipoFunción NombreFunción
+* long int nVertex
 ******
-* Resumen Función
+* Entrega el numero de vertices del grafo.
 ******
 * Input:
-* tipoParámetro NombreParámetro : Descripción Parámetro
-* .......
+* tGrafo *G : Puntero al grafo.
 ******
 * Returns:
-* TipoRetorno, Descripción retorno
+* long int, numero de vertices.
 *****/
 long int nVertex (tGrafo *G){
 	return G -> vertices;
 }
 /*****
-* TipoFunción NombreFunción
+* long int nEdges
 ******
-* Resumen Función
+* Entrega el numero de arcos del grafo.
 ******
 * Input:
-* tipoParámetro NombreParámetro : Descripción Parámetro
-* .......
+* tGrafo *G : Puntero al grafo.
 ******
 * Returns:
-* TipoRetorno, Descripción retorno
+* long int, numero de arcos.
 *****/
 long int nEdges(tGrafo *G){
 	return G->arcos;
