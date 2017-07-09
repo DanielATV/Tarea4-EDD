@@ -15,6 +15,7 @@ int main(){
     long int aux1,aux2;
     tGrafo *G;
     tLista *inter;
+    tLista *interAux;
     //pide el numero de ciudades(nodos) y caminos para trabajar.
     scanf("%li\n",&num_ciuds);
     G =initGraph(num_ciuds);
@@ -27,7 +28,7 @@ int main(){
     //Aca empiezan las consultas!!
     scanf("%li\n",&consultas);
     printf("%ld\n",consultas );
-
+    
     for (i = 0 ; i < consultas ; i++){
 
         ciudad_cumple = num_ciuds; //lo definimos de esta manera para si nadie
@@ -39,6 +40,12 @@ int main(){
         for(k = 0; k < num_amigos -1 ; k++){
             scanf(" %ld",&ciudad);
             inter = Intersection(inter,Vecinos(G,ciudad));
+            /*
+            interAux = Intersection(inter,Vecinos(G,ciudad));
+            clear(inter);
+            *inter = *interAux;
+            clear(interAux);
+            */
 
         }
         //si algun valor sobrevive despues de la interseccion se busca el menor
