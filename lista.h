@@ -50,8 +50,8 @@ void moveToPos (tLista*,int);
 elemento getValue (tLista*);
 // imprime la lista F
 void clearL(tLista*);
-//agrega un elemento en la lista y ademas lo hace en orden (test)
-int insort(tLista *,elemento);
 //realiza la Intersection entre dos listas
 tLista *Intersection(tLista *,tLista *);
+//realiza copia de la lista
+tLista *cpyL(tLista *);
 #endif
