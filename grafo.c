@@ -73,8 +73,35 @@ long int nVertex (tGrafo *G){
 long int nEdges(tGrafo *G){
 	return G->arcos;
 }
-//a partir de un nodo entrega el siguiente
-//entrega NULL si ya no hay mas
+
+/*****
+* elemento first
+******
+* Entrega el primer vecino del grafo en el vertice i.
+******
+* Input:
+* tGrafo *G : Puntero al grafo.
+* long int i: Vertice al que se desea obtener el primer vecino.
+******
+* Returns:
+* elemento , entrega el primer tNodo vecino de la lista i.
+*****/
+elemento first (tGrafo *G, long int i){
+	moveToStart(G->lista[i]);
+	return getValue(G -> lista[i]);
+} 
+/*****
+* elemento nextg
+******
+* Entrega el siguiente vecino del grafo en el vertice i.
+******
+* Input:
+* tGrafo *G : Puntero al grafo.
+* long int i: Vertice al que se desea obtener el primer vecino.
+******
+* Returns:
+* elemento , entrega  el siguiente tNodo vecino de la lista i.
+*****/
 elemento nextg (tGrafo *G,long int i){
 	elemento aux;
 	if(next(G->lista[i]) == G->lista[i]->listSize){
@@ -82,22 +109,6 @@ elemento nextg (tGrafo *G,long int i){
 		return aux;
 	}
 	else return getValue(G->lista[i]);
-} 
-/*****
-* TipoFunción NombreFunción
-******
-* Resumen Función
-******
-* Input:
-* tipoParámetro NombreParámetro : Descripción Parámetro
-* .......
-******
-* Returns:
-* TipoRetorno, Descripción retorno
-*****/
-elemento first (tGrafo *G, long int i){
-	moveToStart(G->lista[i]);
-	return getValue(G -> lista[i]);
 } 
 /*****
 * TipoFunción NombreFunción
