@@ -2,7 +2,29 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-//Crea una lista, mark es por si se trabaja para grafos
+/*****
+* tLista *Intersection
+******
+* Dada dos listas, entrega una puntero a una nueva lista con los elementos comunes.
+******
+* Input:
+* tLista *A : Primera lista que se desea comparar.
+* tLista *B : Segunda lista que se desea comparar.
+******
+* Returns:
+* tLista *, puntero a la nueva lista con elementos comunes.
+*****/
+tLista *Intersection(tLista *A,tLista *B){
+	tLista *C;
+	C = crearLista();
+	for(moveToStart(A); currPos(A) < length(A); next(A))
+		for(moveToStart(B); currPos(B) < length(B); next(B))
+			if( getValue(A).ciudad == getValue(B).ciudad) insert(C, getValue(A));
+	return C;
+}
+
+
+//Crea una lista.
 tLista *crearLista(){
 	tLista* nueva = (tLista *) malloc(sizeof(tLista));
 	tNodo* dummy = (tNodo *)malloc(sizeof(tNodo));
@@ -16,7 +38,7 @@ tLista *crearLista(){
 	nueva -> pos = 0;
 	return nueva;
 }
-//inserta un elemento en una lista l, en la posicion actual
+//Inserta un elemento a la lista.
 int insert(tLista *l, elemento item){
 	tNodo *aux;
 
@@ -25,15 +47,15 @@ int insert(tLista *l, elemento item){
 
 	if (l->curr->sig == NULL){
 		l->curr->sig = aux;
-		return 1; //Retorna 1 si falla.
+		return 1;
 	}
 	l->curr->sig->info = item;
 	l->curr->sig->sig = aux;
 	if(l->curr == l->tail) l->tail = l->curr->sig;
 	l->listSize++;
-	return 0; //La operacion ocurrio con exito
+	return 0; 
 }
-//agrega un elemento al final de la lista
+//Agrega un elemento al final de la lista.
 int append(tLista *l, elemento item){
 	tNodo *temp = (tNodo*)malloc(sizeof(tNodo));
 	if (temp==NULL) return 1;
@@ -53,7 +75,7 @@ int append(tLista *l, elemento item){
 		l->listSize++;
 		return 0;
 }
-//elimina el elemento actual de la lista
+//Elimina el elemento actual de la lista.
 elemento lremove(tLista *l){
 	elemento item = l->curr->sig->info;
 	if (l->curr->sig->sig == NULL){
@@ -67,13 +89,12 @@ elemento lremove(tLista *l){
 	l->listSize--;
 	return item;
 }
-//mueve el cursor de la lista al inicio
+//Mueve el cursor de la lista al inicio.
 void moveToStart(tLista* l){
 	l -> pos = 0;
 	l -> curr = l -> head;
 }
-//se mueve atras en la lista, notas que no es muy eficiente puesto que es lista
-//enlazada, no doble enlazada, no hace nada si nos encontramos en el inicio
+//Se mueve al elemento anterior de la lista.
 void prev (tLista* l){
 	tNodo *aux = l->head;
 	while(aux->sig != l->curr){
@@ -82,12 +103,12 @@ void prev (tLista* l){
 	l->curr = aux;
 	l->pos = (l->pos)-1;
 }
-//mueve el cursor al final de la lista
+//Mueve el cursor al final de la lista.
 void movetoEnd(tLista *l){
 	l->curr = l->tail;
 	l->pos = l->listSize -1;
 }
-//su mueve una posicion adelante
+//Se mueve una posicion adelante
 int next(tLista *l)
 {
 	if(l->curr->sig != l->tail)
@@ -101,19 +122,19 @@ int next(tLista *l)
 		return 0;
 	}
 }
-//entrega el largo de la lista
+//Entrega el largo de la lista.
 long int length(tLista *l){
 	return l->listSize;
 }
-//entrega la posicion actual de la lista
+//Entrega la posicion actual de la lista.
 long int currPos(tLista *l){
 	return l->pos;
 }
-//entrega el elemento actual de la lista
+//Entrega el elemento actual de la lista.
 elemento getValue(tLista *l){
 	return l->curr->sig->info;
 }
-//elimina la lista y elimina todos sus punteros
+//Elimina la lista y elimina todos sus punteros.
 void clearL(tLista *l){
 	int i;
 	tNodo *aux2, *aux;
@@ -168,6 +189,7 @@ tLista *Intersection(tLista *A,tLista *B){
 	}
 	clearL(A);
 	return C;
+
 }
 //realiza una copia de una lista, copia los elementos por lo que no comparte punteros
 tLista *cpyL(tLista *l){
