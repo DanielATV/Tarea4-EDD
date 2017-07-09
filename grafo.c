@@ -133,7 +133,7 @@ void setEdge(tGrafo *G,long int v1,long int v2){
 /*****
 * long int getMark
 ******
-* Resumen Función
+* Obtiene la marca de la ciudad.
 ******
 * Input:
 * tGrafo *G : Puntero al grafo.
@@ -148,7 +148,7 @@ long int getMark (tGrafo *G,long int ciudad){
 /*****
 * void setMark 
 ******
-* Resumen Función
+* Aniade una marca a la ciudad.
 ******
 * Input:
 * tGrafo *G : Puntero al grafo.
