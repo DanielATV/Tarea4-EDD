@@ -162,16 +162,15 @@ void setMark (tGrafo *G, long int ciudad, long int marca){
 	G -> lista[ciudad] -> mark = marca;
 }
 /*****
-* TipoFunción NombreFunción
+* void resetMark
 ******
-* Resumen Función
+* Asigna 0 a todas las marcas de los vertices del grafo.
 ******
 * Input:
-* tipoParámetro NombreParámetro : Descripción Parámetro
-* .......
+* tGrafo *G) : Puntero al grafo.
 ******
 * Returns:
-* TipoRetorno, Descripción retorno
+* void, no retorna parametro.
 *****/
 void resetMark(tGrafo *G){
 	long int j;
