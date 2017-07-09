@@ -8,7 +8,6 @@ int main(){
     long int num_caminos;
 
     long int consultas;
-
     long int num_amigos, k,i;
     long int ciudad;
     long int ciudad_cumple;
@@ -60,6 +59,7 @@ int main(){
         //cumple ciudad_cumple predeterminadamente sera la cantidad de ciudades
         clearL(inter);
     }
+
 
     destroyGraph(G);
     return 0;

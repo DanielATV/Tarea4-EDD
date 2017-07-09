@@ -55,6 +55,7 @@ void setEdge(tGrafo *G,long int v1,long int v2){
 	//agrego ambos elementos
 	insert(G -> lista[v1], G->lista[v2]->head->info);
 	insert(G -> lista[v2], G->lista[v1]->head->info);
+
 }
 //obtengo la marca a partir de un nodo
 long int getMark (tGrafo *G,long int ciudad){
@@ -77,3 +78,8 @@ long int nVecinos(tGrafo *G, long int ciudad){
 tLista *Vecinos(tGrafo *G,long int ciudad){
 	return G->lista[ciudad];
 }
+
+int isEdge (tGrafo *G, long int m, long int n){
+	return 0;
+}
+

@@ -38,4 +38,5 @@ void resetMark(tGrafo *);
 long int nVecinos(tGrafo *, long int);
 //entrega los vecinos de un nodo a partir de su posicion
 tLista *Vecinos(tGrafo *,long int);
+
 #endif
