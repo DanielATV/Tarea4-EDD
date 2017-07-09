@@ -2,7 +2,6 @@
 #define __lista_h__
 
 typedef struct elemento{
-    long int *mark;
     long int ciudad;
 } elemento;
 
@@ -18,6 +17,7 @@ typedef struct Lista{
     tNodo *curr; //Elemento actual
     long int listSize; //Tamaño de la lista
     long int pos; // Posición actual en la lista
+    long int mark; //marca
 } tLista;
 
 // crea la lista LISTO
@@ -50,4 +50,8 @@ void moveToPos (tLista*,int);
 elemento getValue (tLista*);
 // imprime la lista F
 void clearL(tLista*);
+//agrega un elemento en la lista y ademas lo hace en orden (test)
+int insort(tLista *,elemento);
+//realiza la Intersection entre dos listas
+tLista *Intersection(tLista *,tLista *);
 #endif
