@@ -147,4 +147,11 @@ void clearL(tLista *l){
 	free((void *)l->head);
 	free((void *)l);
 }
-
+//Realiza una copia de una lista
+tLista *cpyL(tLista *l){
+	tLista *aux;
+	aux = crearLista();
+	for(moveToStart(l); currPos(l) < length(l); next(l))
+		insert(aux, getValue(l));
+	return aux;
+}
