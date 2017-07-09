@@ -1,8 +1,19 @@
 #include "grafo.h"
+#include "lista.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-//crear grafo
+/*****
+* tGrafo *initGraph
+******
+* Crea una estructura grafo con n vertices.
+******
+* Input:
+* long int n : Numero de vertices.
+******
+* Returns:
+* tGrafo *, Puntero al grafo creado.
+*****/
 tGrafo *initGraph(long int n){
 	long int i;
 	tGrafo *nuevo;
@@ -17,18 +28,50 @@ tGrafo *initGraph(long int n){
 	 }
 	return nuevo;
 }
-//destruye el grafo, elimina todos los punteros existentes
+/*****
+* void destroyGraph
+******
+* Libera la memoria de cada lista del grafo y del grafo.
+******
+* Input:
+* tGrafo *G : Puntero al grafo que se desea liberar la memoria.
+******
+* Returns:
+* void, No retorna parametro.
+*****/
 void destroyGraph (tGrafo *G){
 	int i;
 	for(i = 0; i < G->vertices; i++) clearL(G->lista[i]);
 	free((void *)G->lista);
 	free((void*) G);
 }
-//entrega el numero de vertices
+/*****
+* TipoFunción NombreFunción
+******
+* Resumen Función
+******
+* Input:
+* tipoParámetro NombreParámetro : Descripción Parámetro
+* .......
+******
+* Returns:
+* TipoRetorno, Descripción retorno
+*****/
 long int nVertex (tGrafo *G){
 	return G -> vertices;
 }
-//entrega el numero de arcos
+/*****
+* TipoFunción NombreFunción
+******
+* Resumen Función
+******
+* Input:
+* tipoParámetro NombreParámetro : Descripción Parámetro
+* .......
+******
+* Returns:
+* TipoRetorno, Descripción retorno
+*****/
 long int nEdges(tGrafo *G){
 	return G->arcos;
 }
