@@ -43,7 +43,7 @@ int main(){
             /*
             interAux = Intersection(inter,Vecinos(G,ciudad));
             clear(inter);
-            *inter = *interAux;
+            inter = cpyList(interAux);
             clear(interAux);
             */
 
