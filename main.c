@@ -62,12 +62,7 @@ int main(){
             
             scanf(" %ld",&ciudad);
             inter = Intersection(inter,Vecinos(G,ciudad));
-            /*
-            interAux = Intersection(inter,Vecinos(G,ciudad));
-            clear(inter);
-            inter = cpyL(interAux);
-            clear(interAux);
-            */
+
         }
         
         /* Se busca el menor de la interseccion */
