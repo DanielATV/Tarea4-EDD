@@ -161,16 +161,18 @@ int insort(tLista *l, elemento item){
 tLista *Intersection(tLista *A,tLista *B){
 	tLista *C; //sera la lista que entregue
 	C = crearLista();
-	for(moveToStart(A); currPos(A) < length(A); next(A))
-		for(moveToStart(B); currPos(B) < length(B); next(B))
+	for(moveToStart(A); currPos(A) < length(A); next(A)){
+		for(moveToStart(B); currPos(B) < length(B); next(B)){
 			if( getValue(A).ciudad == getValue(B).ciudad) insert(C, getValue(A));
-	free((void *)A);
+		}
+	}
+	clearL(A);
 	return C;
 }
-
+//realiza una copia de una lista, copia los elementos por lo que no comparte punteros
 tLista *cpyL(tLista *l){
 	tLista *aux;
-	crearLista(aux);
+	aux = crearLista();
 	for(moveToStart(l); currPos(l) < length(l); next(l))
 		insert(aux, getValue(l));
 	return aux;
