@@ -57,7 +57,7 @@ int main(){
         /* Se realiza la interseccion de los vecinos de todos los amigos */
         for(k = 0; k < num_amigos -1 ; k++){
             scanf(" %ld",&ciudad);
-            inter = Intersection(inter,Vecinos(G,ciudad));
+            inter = Intersection(inter,Vecinos(G,ciudad)); //Se encuentra en TDA lista.
         }
 
         /* Se busca el menor de la interseccion */
