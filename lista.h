@@ -52,6 +52,6 @@ elemento getValue (tLista*);
 void clearL(tLista*);
 //realiza la Intersection entre dos listas
 tLista *Intersection(tLista *,tLista *);
-//realiza copia de la lista
+//realiza una copia de una lista dada
 tLista *cpyL(tLista *);
 #endif
