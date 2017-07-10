@@ -2,6 +2,29 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/*****
+* tLista *Intersection
+******
+* Dada dos listas, entrega una puntero a una nueva lista con los elementos comunes.
+******
+* Input:
+* tLista *A : Primera lista que se desea comparar.
+* tLista *B : Segunda lista que se desea comparar.
+******
+* Returns:
+* tLista *, puntero a la nueva lista con elementos comunes.
+*****/
+
+tLista *Intersection(tLista *A,tLista *B){
+	tLista *C; //sera la lista que entregue
+	C = crearLista();
+	for(moveToStart(A); currPos(A) < length(A); next(A))
+		for(moveToStart(B); currPos(B) < length(B); next(B))
+			if( getValue(A).ciudad == getValue(B).ciudad) insert(C, getValue(A));
+	clearL(A);
+	return C;
+}
+
 //Crea una lista, mark es por si se trabaja para grafos
 tLista *crearLista(){
 	tLista* nueva = (tLista *) malloc(sizeof(tLista));
@@ -126,58 +149,7 @@ void clearL(tLista *l){
 	free((void *)l->head);
 	free((void *)l);
 }
-//agrega un elemento en la posicion actual de la lista y lo hace manteniendo orden creciente
-int insort(tLista *l, elemento item){
-	tNodo *aux;
-	if(l->curr->sig != NULL){
-		moveToStart(l);
-		while(l->pos < l->listSize){
-			if(item.ciudad > getValue(l).ciudad) next(l);
-			else break;
-		}
-		aux = l->curr->sig;
-		l->curr->sig = (tNodo *)malloc(sizeof(tNodo));
 
-		l->curr->sig->info = item;
-		l->curr->sig->sig = aux;
-		if(l->curr == l->tail) l->tail = l->curr->sig;
-		l->listSize++;
-		return 0; //La operacion ocurrio con exito
-
-	}
-	else{
-		aux = l->curr->sig;
-		l->curr->sig = (tNodo *)malloc(sizeof(tNodo));
-
-		l->curr->sig->info = item;
-		l->curr->sig->sig = aux;
-		if(l->curr == l->tail) l->tail = l->curr->sig;
-		l->listSize++;
-		return 0; //La operacion ocurrio con exito
-	}
-}/*****
-* tLista *Intersection
-******
-* Dada dos listas, entrega una puntero a una nueva lista con los elementos comunes.
-******
-* Input:
-* tLista *A : Primera lista que se desea comparar.
-* tLista *B : Segunda lista que se desea comparar.
-******
-* Returns:
-* tLista *, puntero a la nueva lista con elementos comunes.
-*****/
-//entrega una lista correspondiente a la interseccion de dos litas
-// la lista tendra largo 0 si no hay elementos en comun
-tLista *Intersection(tLista *A,tLista *B){
-	tLista *C; //sera la lista que entregue
-	C = crearLista();
-	for(moveToStart(A); currPos(A) < length(A); next(A))
-		for(moveToStart(B); currPos(B) < length(B); next(B))
-			if( getValue(A).ciudad == getValue(B).ciudad) insert(C, getValue(A));
-	clearL(A);
-	return C;
-}
 //realiza una copia de una lista, copia los elementos por lo que no comparte punteros
 tLista *cpyL(tLista *l){
 	tLista *aux;
