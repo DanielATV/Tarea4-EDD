@@ -10,27 +10,24 @@ typedef struct grafo{
     tLista **lista; //puntero a la lista
 } tGrafo;
 
-// inicializa un grafo para n vertices--S
+// inicializa un grafo para n vertices
 tGrafo *initGraph (long int);
-// libera la memoria utilizada por un grafo--F
+// libera la memoria utilizada por un grafo
 void destroyGraph (tGrafo *);
-// retorna el numero de vertices en el grafo--D
+// retorna el numero de vertices en el grafo
 long int nVertex (tGrafo *);
-// retorna el numero de arcos en el grafo--S
+// retorna el numero de arcos en el grafo
 long int nEdges (tGrafo *);
-// Devuelve el primer vecino de un vertice v dado (asume que los
-// vecinos de un vertice estan ordenados por número de vertice)--D
+// Devuelve el primer vecino de un vertice  dado 
 elemento first (tGrafo *, long int);
-// devuelve el vecino siguiente (i+1) a uno dado (i).
-// Retorna NULL si es que no existe--D
+// devuelve el vecino siguiente  a uno dado
+// Retorna NULL si es que no existe
 elemento nextg (tGrafo *, long int);
-// agrega un nuevo arco al grafo entre vertices v1 y v2 (no se
-// pueden agregar nuevos vertices)--S
+// agrega un nuevo arco al grafo entre vertices v1 y v2
 void setEdge (tGrafo *, long int, long int);
-// obtiene la marca asignada a un vertice dado (ciertos algoritmos
-// necesitan marcar los vertices)---F
+// obtiene la marca asignada a un vertice dado
 long int getMark (tGrafo *,long int);
-// marca un vertice con un valor dado---D
+// marca un vertice con un valor dado
 void setMark (tGrafo *, long int,long int);
 //resetea las marcas a 0
 void resetMark(tGrafo *);
