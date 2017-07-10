@@ -28,8 +28,7 @@ int main(){
     long int aux1,aux2;
     tGrafo *G;
     tLista *inter;
-    
- 
+   
     /* Creacion del grafo */
     scanf("%li\n",&num_ciuds);
     G =initGraph(num_ciuds);
