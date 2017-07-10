@@ -1,6 +1,7 @@
 #include "grafo.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 /*****
 * tGrafo *initGraph
 ******
@@ -12,7 +13,7 @@
 * Returns:
 * tGrafo *, puntero al grafo creado.
 *****/
-//crear grafo
+
 tGrafo *initGraph(long int n){
 	long int i;
 	tGrafo *nuevo;
@@ -27,6 +28,7 @@ tGrafo *initGraph(long int n){
 	 }
 	return nuevo;
 }
+
 /*****
 * void destroyGraph
 ******
@@ -38,13 +40,14 @@ tGrafo *initGraph(long int n){
 * Returns:
 * void, no retorna parametro.
 *****/
-//destruye el grafo, elimina todos los punteros existentes
+
 void destroyGraph (tGrafo *G){
 	int i;
 	for(i = 0; i < G->vertices; i++) clearL(G->lista[i]);
 	free((void *)G->lista);
 	free((void*) G);
 }
+
 /*****
 * long int nVertex
 ******
@@ -56,10 +59,11 @@ void destroyGraph (tGrafo *G){
 * Returns:
 * long int, numero de vertices.
 *****/
-//entrega el numero de vertices
+
 long int nVertex (tGrafo *G){
 	return G -> vertices;
 }
+
 /*****
 * long int nEdges
 ******
@@ -71,10 +75,11 @@ long int nVertex (tGrafo *G){
 * Returns:
 * long int, numero de arcos.
 *****/
-//entrega el numero de arcos
+
 long int nEdges(tGrafo *G){
 	return G->arcos;
 }
+
 /*****
 * elemento nextg
 ******
@@ -87,8 +92,7 @@ long int nEdges(tGrafo *G){
 * Returns:
 * elemento , entrega  el siguiente elemento vecino de la lista.
 *****/
-//a partir de un nodo entrega el siguiente
-//entrega NULL si ya no hay mas
+
 elemento nextg (tGrafo *G,long int i){
 	elemento aux;
 	if(next(G->lista[i]) == G->lista[i]->listSize){
@@ -96,7 +100,8 @@ elemento nextg (tGrafo *G,long int i){
 		return aux;
 	}
 	else return getValue(G->lista[i]);
-} //quiero cambiar para que entregue elemento y aplique el next() de lista
+}
+
 /*****
 * elemento first
 ******
@@ -109,12 +114,12 @@ elemento nextg (tGrafo *G,long int i){
 * Returns:
 * elemento , entrega el primer elemento vecino de la lista.
 *****/
-//entrega un nodo como primer vecino de una ciudad,
-//este primer vecino es arbitrario si se guarda con insert()
+
 elemento first (tGrafo *G, long int i){
 	moveToStart(G->lista[i]);
 	return getValue(G -> lista[i]);
-} //quiero que entregue un elemento y haga moveToStart() de la lista
+} 
+
 /*****
 * void setEdge
 ******
@@ -128,15 +133,14 @@ elemento first (tGrafo *G, long int i){
 * Returns:
 * void, no retorna parametro.
 *****/
-//agrega un arco a 2 ciudades dadas, se puede cambiar por insort()
-//para que sea en orden
+
 void setEdge(tGrafo *G,long int v1,long int v2){
-	G -> arcos++; //aumento en 1 el numero de arcos
-	//agrego ambos elementos
+	G -> arcos++; 
 	insert(G -> lista[v1], G->lista[v2]->head->info);
 	insert(G -> lista[v2], G->lista[v1]->head->info);
 
 }
+
 /*****
 * long int getMark
 ******
@@ -149,10 +153,11 @@ void setEdge(tGrafo *G,long int v1,long int v2){
 * Returns:
 * long int, marca asignada.
 *****/
-//obtengo la marca a partir de un nodo
+
 long int getMark (tGrafo *G,long int ciudad){
 	return G->lista[ciudad]->mark;
 }
+
 /*****
 * void setMark
 ******
@@ -166,10 +171,11 @@ long int getMark (tGrafo *G,long int ciudad){
 * Returns:
 * void, no retorna parametro.
 *****/
-//agrega a un nodo una marca, lo guarda como variable de la lista
+
 void setMark (tGrafo *G, long int ciudad, long int marca){
 	G -> lista[ciudad] -> mark = marca;
 }
+
 /*****
 * void resetMark
 ******
@@ -181,11 +187,12 @@ void setMark (tGrafo *G, long int ciudad, long int marca){
 * Returns:
 * void, no retorna parametro.
 *****/
-//resetea todas las marcas de todos los nodos
+
 void resetMark(tGrafo *G){
 	long int j;
 	for(j = 0;j< G -> vertices ;j++) G->lista[j]->mark = 0;
 }
+
 /*****
 * long int nVecinos
 ******
@@ -198,10 +205,11 @@ void resetMark(tGrafo *G){
 * Returns:
 * long int, numero de vecinos.
 *****/
-//entrega el numero de vecinos que tiene un nodo
+
 long int nVecinos(tGrafo *G, long int ciudad){
 	return length(G -> lista[ciudad]);
 }
+
 /*****
 * tLista *Vecinos
 ******
@@ -214,7 +222,7 @@ long int nVecinos(tGrafo *G, long int ciudad){
 * Returns:
 * tLista *, puntero a la lista.
 *****/
-//entrega una lista con los vecinos de la posicion de una lista
+
 tLista *Vecinos(tGrafo *G,long int ciudad){
 	return G->lista[ciudad];
 }
