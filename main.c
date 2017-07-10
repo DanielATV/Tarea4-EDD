@@ -61,10 +61,11 @@ int main(){
         }
 
         /* Se busca el menor de la interseccion */
-        if(length(inter) != 0)
-          for (moveToStart(inter); currPos(inter) < length(inter); next(inter)){
-              if (getValue(inter).ciudad < ciudad_cumple) ciudad_cumple = getValue(inter).ciudad;
-          }
+        if(length(inter) != 0){
+            for (moveToStart(inter); currPos(inter) < length(inter); next(inter)){
+                if (getValue(inter).ciudad < ciudad_cumple) ciudad_cumple = getValue(inter).ciudad;
+            }
+        }
         
         /* Output del problema */
         printf("%li\n",ciudad_cumple);
